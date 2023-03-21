@@ -12,7 +12,7 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    IonicModule.forRoot(),
+    IonicModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
