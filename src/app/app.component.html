@@ -10,8 +10,8 @@
 <header>
     <nav class="navigation desktop-only">
         <ul>
-            <li><a href="/">Головна</a></li>
-            <li><a href="/coachtesting">Групові тестування</a></li>
+            <li><a [routerLink]="['/']">Головна</a></li>
+            <li><a [routerLink]="['/coachtesting']">Групові тестування</a></li>
         </ul>
         <ul class="user-nav">
             <li class="dropdown">
@@ -22,25 +22,23 @@
             </li>
         </ul>
         <ul class="user-nav">
-            <li><a href="/signup">Реєстрація</a></li>
             <li><a [routerLink]="['/login']">Увійти</a></li>
         </ul>
     </nav>
     <nav class="navigation mobile-only">
         <ul>
-            <li><a href="/"><ion-icon name="home-sharp"></ion-icon></a></li>
-            <li><a href="/coachtesting"><ion-icon name="grid-sharp"></ion-icon></a></li>
+            <li><a [routerLink]="['/']">Головна</a></li>
+            <li><a [routerLink]="['/coachtesting']">Групові</a></li>
         </ul>
         <ul class="user-nav">
             <li class="dropdown">
-                <button class="drop-btn"><ion-icon name="person-sharp"></ion-icon></button>
+                <button class="drop-btn">Юзер</button>
                 <div class="dropdown-menu">
                     <div id="sign-out-mobility" class="button-form">Вийти</div>
                 </div>
             </li>
         </ul>
         <ul class="user-nav">
-            <li><a href="/signup"><ion-icon name="log-in-sharp"></ion-icon></a></li>
             <li><a [routerLink]="['/login']">Увійти</a></li>
         </ul>
     </nav>
