@@ -23,7 +23,14 @@ export class AuthService {
         if (!this.isLoggedIn()) {
             return '';
         }
-        return this.userInfo.person.first_name + ' ' + this.userInfo.person.last_name;
+        if (!this.userInfo) {
+            this.getUser();
+        }
+        if (this.userInfo) {
+            return this.userInfo.person.first_name + ' ' + this.userInfo.person.last_name;
+        }
+        
+        return '';
     }
 
     isCoach(): boolean {

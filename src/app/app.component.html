@@ -3,43 +3,43 @@
 <head>
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css2?family=Jura:wght@500&display=swap" rel="stylesheet">
-    <title>{{title}}</title>
+    <title>{{'Title' | translate}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 <header>
     <nav class="navigation desktop-only">
         <ul>
-            <li><a [routerLink]="['/']">Головна</a></li>
-            <li><a [routerLink]="['/coachtesting']" *ngIf="_auth.isLoggedIn()">Групові тестування</a></li>
+            <li><a [routerLink]="['/']"> {{'nav.main' | translate}} </a></li>
+            <li><a [routerLink]="['/coachtesting']" *ngIf="_auth.isLoggedIn()">{{'nav.grouptest' | translate}}</a></li>
         </ul>
         <ul *ngIf="_auth.isLoggedIn" class="user-nav">
             <li class="dropdown">
                 <button class="drop-btn">{{ _auth.getUserName() }}</button>
                 <div class="dropdown-menu">
-                    <div id="sign-out-desktop" class="button-form" (click)="logout()">Вийти</div>
+                    <div id="sign-out-desktop" class="button-form" (click)="logout()">{{'nav.logout' | translate}}</div>
                 </div>
             </li>
         </ul>
         <ul class="user-nav" *ngIf="!_auth.isLoggedIn()">
-            <li><a [routerLink]="['/login']">Увійти</a></li>
+            <li><a [routerLink]="['/login']">{{'nav.login' | translate}}</a></li>
         </ul>
     </nav>
     <nav class="navigation mobile-only">
         <ul>
-            <li><a [routerLink]="['/']">Головна</a></li>
-            <li><a [routerLink]="['/coachtesting']" *ngIf="_auth.isLoggedIn()">Групові</a></li>
+            <li><a [routerLink]="['/']">{{'nav.main' | translate}}</a></li>
+            <li><a [routerLink]="['/coachtesting']" *ngIf="_auth.isLoggedIn()">{{'nav.grouptestshort' | translate}}</a></li>
         </ul>
         <ul class="user-nav" *ngIf="_auth.isLoggedIn">
             <li class="dropdown">
                 <button class="drop-btn">{{ _auth.getUserName() }}</button>
                 <div class="dropdown-menu">
-                    <div id="sign-out-mobility" class="button-form" (click)="logout()">Вийти</div>
+                    <div id="sign-out-mobility" class="button-form" (click)="logout()">{{'nav.logout' | translate}}</div>
                 </div>
             </li>
         </ul>
         <ul class="user-nav" *ngIf="!_auth.isLoggedIn()">
-            <li><a [routerLink]="['/login']">Увійти</a></li>
+            <li><a [routerLink]="['/login']">{{'nav.login' | translate}}</a></li>
         </ul>
     </nav>
 </header>

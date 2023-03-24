@@ -1,0 +1,11 @@
+{
+    "Title": "TennisHub",
+    "add": "Додати",
+    "nav": {
+        "main": "Головна",
+        "grouptest": "Груповий тест",
+        "grouptestshort": "Груповий",
+        "login": "Вхід",
+        "logout": "Вихід"
+    }
+}
