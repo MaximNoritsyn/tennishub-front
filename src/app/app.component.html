@@ -13,34 +13,42 @@
             <li><a [routerLink]="['/']"> {{'nav.main' | translate}} </a></li>
             <li><a [routerLink]="['/coachtesting']" *ngIf="_auth.isLoggedIn()">{{'nav.grouptest' | translate}}</a></li>
         </ul>
-        <ul *ngIf="_auth.isLoggedIn" class="user-nav">
-            <li class="dropdown">
-                <button class="drop-btn">{{ _auth.getUserName() }}</button>
-                <div class="dropdown-menu">
-                    <div id="sign-out-desktop" class="button-form" (click)="logout()">{{'nav.logout' | translate}}</div>
-                </div>
-            </li>
-        </ul>
-        <ul class="user-nav" *ngIf="!_auth.isLoggedIn()">
-            <li><a [routerLink]="['/login']">{{'nav.login' | translate}}</a></li>
-        </ul>
+        <div class="right-menu-block">
+            <ul *ngIf="_auth.isLoggedIn" class="user-nav">
+                <li class="dropdown">
+                    <button class="drop-btn">{{ _auth.getUserName() }}</button>
+                    <div class="dropdown-menu">
+                        <div id="sign-out-desktop" class="button-form" (click)="logout()">{{'nav.logout' | translate}}</div>
+                    </div>
+                </li>
+            </ul>
+            <ul class="user-nav" *ngIf="!_auth.isLoggedIn()">
+                <li><a [routerLink]="['/login']">{{'nav.login' | translate}}</a></li>
+            </ul>
+            <div class="lang-button" *ngIf="translate_service.getLanguage() == 'ua'" (click)="switchLanguage('en')">🇺🇦</div>
+            <div class="lang-button" *ngIf="translate_service.getLanguage() == 'en'" (click)="switchLanguage('ua')">🇬🇧</div>
+        </div>
     </nav>
     <nav class="navigation mobile-only">
         <ul>
             <li><a [routerLink]="['/']">{{'nav.main' | translate}}</a></li>
             <li><a [routerLink]="['/coachtesting']" *ngIf="_auth.isLoggedIn()">{{'nav.grouptestshort' | translate}}</a></li>
         </ul>
-        <ul class="user-nav" *ngIf="_auth.isLoggedIn">
-            <li class="dropdown">
-                <button class="drop-btn">{{ _auth.getUserName() }}</button>
-                <div class="dropdown-menu">
-                    <div id="sign-out-mobility" class="button-form" (click)="logout()">{{'nav.logout' | translate}}</div>
-                </div>
-            </li>
-        </ul>
-        <ul class="user-nav" *ngIf="!_auth.isLoggedIn()">
-            <li><a [routerLink]="['/login']">{{'nav.login' | translate}}</a></li>
-        </ul>
+        <div class="right-menu-block">
+            <ul class="user-nav" *ngIf="_auth.isLoggedIn">
+                <li class="dropdown">
+                    <button class="drop-btn">{{ _auth.getUserName() }}</button>
+                    <div class="dropdown-menu">
+                        <div id="sign-out-mobility" class="button-form" (click)="logout()">{{'nav.logout' | translate}}</div>
+                    </div>
+                </li>
+            </ul>
+            <ul class="user-nav" *ngIf="!_auth.isLoggedIn()">
+                <li><a [routerLink]="['/login']">{{'nav.login' | translate}}</a></li>
+            </ul>
+            <div class="lang-button" *ngIf="translate_service.getLanguage() == 'ua'" (click)="switchLanguage('en')">🇺🇦</div>
+            <div class="lang-button" *ngIf="translate_service.getLanguage() == 'en'" (click)="switchLanguage('ua')">🇬🇧</div>
+        </div>
     </nav>
 </header>
 <main>

@@ -375,3 +375,15 @@ input[readonly] {
   border-radius: 50%;
   border: 4px solid var(--clr60);
 }
+
+.right-menu-block{
+  display: inherit;
+  justify-items: center;
+  align-items: center;
+  margin: 10px;
+}
+
+.lang-button {
+  cursor: pointer;
+  font-size: x-large;
+}
