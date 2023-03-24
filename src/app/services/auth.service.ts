@@ -1,17 +1,37 @@
 import { Injectable } from '@angular/core'; 
+import { ApiService } from './api.service';
  
 @Injectable({ 
     providedIn: 'root' 
 }) 
 export class AuthService { 
+
+    userInfo: any;
     
-    constructor() { 
+    constructor(private _api: ApiService) { 
     } 
  
-    getUserDetails() { 
-      const userInfo = localStorage.getItem('userInfo');
-      return userInfo ? JSON.parse(userInfo) : null; 
-    } 
+    getUser(): void {
+        this._api.getTypeRequest('api/user').subscribe((res: any) => {
+        this.userInfo = res;
+        } , err => {
+          console.log(err);
+        }
+    )};
+
+    getUserName(): string {
+        if (!this.isLoggedIn()) {
+            return '';
+        }
+        return this.userInfo.person.first_name + ' ' + this.userInfo.person.last_name;
+    }
+
+    isCoach(): boolean {
+        if (!this.isLoggedIn()) {
+            return false;
+        }
+        return this.userInfo.person.is_coach;
+    }
      
     setDataInLocalStorage(variableName:string, data:string): void { 
         localStorage.setItem(variableName, data); 

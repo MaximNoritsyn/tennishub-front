@@ -28,7 +28,6 @@ export class LoginComponent implements OnInit {
     let b = this.form.value;
     this._api.postTypeRequest('api/login', b).subscribe((res: any) => { 
       if(res.access_token){
-        console.log('access_token: ' + res.access_token);
         this._auth.setDataInLocalStorage('token', res.access_token) 
         this.router.navigate(['/']) 
       } 
