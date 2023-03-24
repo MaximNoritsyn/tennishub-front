@@ -11,34 +11,34 @@
     <nav class="navigation desktop-only">
         <ul>
             <li><a [routerLink]="['/']">Головна</a></li>
-            <li><a [routerLink]="['/coachtesting']">Групові тестування</a></li>
+            <li><a [routerLink]="['/coachtesting']" *ngIf="_auth.isLoggedIn">Групові тестування</a></li>
         </ul>
-        <ul class="user-nav">
+        <ul *ngIf="_auth.isLoggedIn" class="user-nav">
             <li class="dropdown">
                 <button class="drop-btn">{{ name }}</button>
                 <div class="dropdown-menu">
-                    <div id="sign-out-desktop" class="button-form">Вийти</div>
+                    <div id="sign-out-desktop" class="button-form" (click)="logout()">Вийти</div>
                 </div>
             </li>
         </ul>
-        <ul class="user-nav">
+        <ul class="user-nav" *ngIf="!_auth.isLoggedIn">
             <li><a [routerLink]="['/login']">Увійти</a></li>
         </ul>
     </nav>
     <nav class="navigation mobile-only">
         <ul>
             <li><a [routerLink]="['/']">Головна</a></li>
-            <li><a [routerLink]="['/coachtesting']">Групові</a></li>
+            <li><a [routerLink]="['/coachtesting']" *ngIf="_auth.isLoggedIn">Групові</a></li>
         </ul>
-        <ul class="user-nav">
+        <ul class="user-nav" *ngIf="_auth.isLoggedIn">
             <li class="dropdown">
-                <button class="drop-btn">Юзер</button>
+                <button class="drop-btn">{{ name }}</button>
                 <div class="dropdown-menu">
-                    <div id="sign-out-mobility" class="button-form">Вийти</div>
+                    <div id="sign-out-mobility" class="button-form" (click)="logout()">Вийти</div>
                 </div>
             </li>
         </ul>
-        <ul class="user-nav">
+        <ul class="user-nav" *ngIf="!_auth.isLoggedIn">
             <li><a [routerLink]="['/login']">Увійти</a></li>
         </ul>
     </nav>
