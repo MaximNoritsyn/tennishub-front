@@ -1,17 +1,108 @@
-<div>
-  <form class="edit-form" [formGroup] = 'form' (ngSubmit) = 'login()'>
+<div *ngIf="!registerMode" class="blockcenter">
+  <form class="edit-form" [formGroup] = 'loginForm' (ngSubmit) = 'login()'>
     <div>
-      <label for="username">Username:</label>
-      <input type="text" id="username" formControlName="username" required>
+      <label for="username">{{ 'user.username' | translate }}:</label>
+      <input type="text" id="username" formControlName="username">
     </div>
     <div>
-      <label for="password">Password:</label>
-      <input type="password" id="password" formControlName="password" required>
+      <label for="password">{{ 'user.password' | translate }}:</label>
+      <input type="password" id="password" formControlName="password">
     </div>
     <div>
-      <button type="submit" [disabled] = '!this.form.valid'>Увійти</button>
+      <button type="submit" [disabled] = '!this.loginForm.valid'>{{ 'nav.login' | translate }}</button>
     </div>
   </form>
-  <a [routerLink]="['/signup']"><button>Реєстрація</button></a>
+  <button (click)="registerModeChange(true)">{{ 'nav.register' | translate }}</button>
 </div>  
+
+<div *ngIf="registerMode" class="blockcenter">
+  <form class="edit-form" [formGroup] = 'signUpForm' (ngSubmit) = 'signup()'>
+
+    <div>
+        <label for="firstName">{{ 'person.firstname' | translate }}</label>
+        <input type="text" id="firstName" formControlName="firstName">
+    </div>
+    <div *ngIf="signUpForm.get('firstName')?.errors && signUpForm.get('firstName')?.touched">
+      {{ 'user.errormessege.firstName' | translate }}
+    </div>
+
+    <div>
+        <label for="lastName">{{ 'person.lastname' | translate }}</label>
+        <input type="text" id="lastName" formControlName="lastName">
+    </div>
+    <div *ngIf="signUpForm.get('lastName')?.errors && signUpForm.get('lastName')?.touched">
+      {{ 'user.errormessege.lastName' | translate }}
+    </div>
+
+    <div>
+        <label for="birthday">{{ 'person.birthday' | translate }}</label>
+        <input type="date" id="birthday" formControlName="birthday">
+    </div>
+    <div *ngIf="signUpForm.get('birthday')?.errors">
+      {{ 'user.errormessege.birthday' | translate }}
+    </div>
+
+    <div>
+        <label for="sex">{{ 'person.sex' | translate }}</label>
+        <div class="point-boxes" id="sex">
+            <input type="radio" id="female" [value]="'F'" formControlName="sex">
+            <label for="female" class="point-box">{{ 'person.sexes.female' | translate }}</label>
+            <br>
+            <input type="radio" id="male" [value]="'M'" formControlName="sex">
+            <label for="male" class="point-box">{{ 'person.sexes.male' | translate }}</label>
+        </div>
+    </div>
+
+    <div>
+        <label for="email">{{ 'person.email' | translate }}</label>
+        <input type="email" id="email" formControlName="email">
+    </div>
+
+    <div>
+        <label for="tel">{{ 'person.phone' | translate }}</label>
+        <input type="text" id="tel" placeholder="3801234567890" formControlName="tel">
+    </div>
+    <div *ngIf="signUpForm.get('tel')?.errors && signUpForm.get('tel')?.touched">
+      {{ 'user.errormessege.telEmail' | translate }}
+    </div>
+
+    <div>
+        <label for="username">{{ 'user.username' | translate }}</label>
+        <input type="text" id="username" formControlName="username">
+    </div>
+    <div *ngIf="signUpForm.get('username')?.errors && signUpForm.get('username')?.touched">
+      {{ 'user.errormessege.username' | translate }}
+    </div>
+
+    <div>
+        <label for="password">{{ 'user.password' | translate }}</label>
+        <input type="password" id="password" formControlName="password">
+    </div>
+    <div *ngIf="signUpForm.get('password')?.errors && signUpForm.get('password')?.touched">
+      {{ 'user.errormessege.password' | translate }}
+    </div>
+
+    <div>
+        <label for="repeat_password">{{ 'user.repeatpassword' | translate }}</label>
+        <input type="password" id="repeat_password" id="repeat_password" formControlName="repeat_password">
+    </div>
+    <div *ngIf="signUpForm.get('repeat_password')?.errors && signUpForm.get('repeat_password')?.touched">
+      {{ 'user.errormessege.mismatch' | translate }}
+    </div>
+
+    <div>
+        <label for="is_coach">{{ 'person.role' | translate }}</label>
+        <div class="point-boxes" id="is_coach">
+            <input type="radio" id="is_coach_false" formControlName="is_coach" [value]=false>
+            <label for="is_coach_false" class="point-box">{{ 'person.roles.player' | translate }}</label>
+            <br>
+            <input type="radio" id="is_coach_true" formControlName="is_coach" [value]=true>
+            <label for="is_coach_true" class="point-box">{{ 'person.roles.coach' | translate }}</label>
+        </div>
+    </div>
+
+    <button type="submit" [disabled] = '!this.signUpForm.valid'>{{ 'nav.register' | translate }}</button>
+  </form>
+  <button (click)="registerModeChange(false)">{{ 'nav.login' | translate }}</button>
+</div>
   

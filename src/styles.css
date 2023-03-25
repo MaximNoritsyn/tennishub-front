@@ -177,6 +177,12 @@ button {
   transition: background-color 0.3s ease-in-out;
 }
 
+button[disabled] {
+  background-color: var(--clr60gray);
+  border: 1px solid var(--clr60gray);
+  cursor: not-allowed;
+}
+
 
 button:hover {
   border: 1px solid var(--fclr30);
@@ -386,4 +392,10 @@ input[readonly] {
 .lang-button {
   cursor: pointer;
   font-size: x-large;
+}
+
+.blockcenter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

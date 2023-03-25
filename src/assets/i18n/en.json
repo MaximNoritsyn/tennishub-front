@@ -6,6 +6,29 @@
         "grouptest": "Group Test",
         "grouptestshort": "Group",
         "login": "Log In",
-        "logout": "Log Out"
+        "logout": "Log Out",
+        "register": "Sign Up"
+    },
+    "user": {
+        "username": "Username",
+        "password": "Password",
+        "repeatpassword": "Repeat Password"
+    },
+    "person": {
+        "firstname": "First Name",
+        "lastname": "Last Name",
+        "birthday": "Date of Birth",
+        "sex": "Gender",
+        "email": "Email",
+        "phone": "Phone",
+        "role": "Role",
+        "roles": {
+            "coach": "Coach",
+            "player": "Player"
+        },
+        "sexes": {
+            "female": "Female",
+            "male": "Male"
+        }
     }
 }
