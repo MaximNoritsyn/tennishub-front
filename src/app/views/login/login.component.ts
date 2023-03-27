@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
     public fb: FormBuilder,
     private _api: ApiService,
     private _auth: AuthService,
-    private router: Router
+    private _router: Router
   ) 
   { 
     this.loginForm = this.fb.group({ 
@@ -68,7 +68,7 @@ export class LoginComponent implements OnInit {
       if(res.access_token){
         this._auth.setDataInLocalStorage('token', res.access_token) 
         this._auth.userInfo = res.user;
-        this.router.navigate(['/']) 
+        this._router.navigate(['/']) 
       } 
     }, err => { 
       console.log(err) 
@@ -81,7 +81,7 @@ export class LoginComponent implements OnInit {
       if(res.access_token){
         this._auth.setDataInLocalStorage('token', res.access_token);
         this._auth.userInfo = res.user;
-        this.router.navigate(['/'])
+        this._router.navigate(['/'])
       }
     }, err => {
       console.log(err)

@@ -14,6 +14,7 @@ import { InterceptorService } from './services/interceptor-service.service';
 import { Translate_Service } from './services/translate.service';
 import { AuthService } from './services/auth.service';
 import { ApiService } from './services/api.service';
+import { IndexComponent } from './views/index/index.component';
 
 registerLocaleData(localeUk);
 
@@ -24,7 +25,8 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    IndexComponent
   ],
   imports: [
     BrowserModule,

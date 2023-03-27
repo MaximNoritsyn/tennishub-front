@@ -1,43 +1,66 @@
-import { Injectable } from '@angular/core'; 
+import { Injectable, OnInit } from '@angular/core'; 
 import { ApiService } from './api.service';
  
 @Injectable({ 
     providedIn: 'root' 
 }) 
-export class AuthService { 
+export class AuthService implements OnInit { 
 
     userInfo: any;
     
     constructor(private _api: ApiService) { 
+        
     } 
+
+    ngOnInit(): void {
+        if (this.isLoggedIn()) {
+            this.getUser();
+        }
+    }
  
     getUser(): void {
+        if (!this.isLoggedIn()) {
+            return;
+        }
         this._api.getTypeRequest('api/user').subscribe((res: any) => {
         this.userInfo = res;
         } , err => {
           console.log(err);
+          this.clearStorage();
         }
-    )};
+    )}
 
     getUserName(): string {
         if (!this.isLoggedIn()) {
             return '';
         }
-        if (!this.userInfo) {
-            this.getUser();
-        }
         if (this.userInfo) {
             return this.userInfo.person.first_name + ' ' + this.userInfo.person.last_name;
         }
-        
+
         return '';
+        
+    }
+
+    getPersonId_Db(): string {
+        if (!this.isLoggedIn()) {
+            return '';
+        }
+        if (this.userInfo) {
+            return this.userInfo.person.id_db? this.userInfo.person.id_db : '';
+        }
+        return '';
+        
     }
 
     isCoach(): boolean {
         if (!this.isLoggedIn()) {
             return false;
         }
-        return this.userInfo.person.is_coach;
+        if (this.userInfo) {
+            return this.userInfo.person.is_coach? true : false;
+        }
+        return false;
     }
      
     setDataInLocalStorage(variableName:string, data:string): void { 

@@ -1,3 +1,75 @@
-<p>
-  index works!
-</p>
+<div *ngIf="!_auth.isLoggedIn()">
+  <h3>{{'base.common.mainWelcome' | translate }}</h3>
+</div>
+
+<div *ngIf="_auth.isLoggedIn() && _auth.isCoach()">
+  <table class="content-table">
+    <thead>
+      <tr>
+        <th>
+          <div>
+            <div>{{'base.common.players' | translate }}</div>
+            <div>
+              <a [routerLink]="['/players/new']">
+                <button>{{'base.common.add' | translate }}</button>
+              </a>
+            </div>
+          </div>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let player of players" (click)="gotoPlayer(player.id_db)">
+        <td>
+          {{ player.first_name }} {{ player.last_name }}
+        </td>
+      </tr>
+    </tbody>
+  </table> 
+</div>
+
+<div *ngIf="_auth.isLoggedIn() && !_auth.isCoach()">
+  <div><h3>{{'base.common.allTests' | translate }}</h3>
+    <a [routerLink]="['/testing/{{_auth.getPersonId_Db()}}/new']">
+        <button>
+          {{'base.common.beginTest' | translate }}
+        </button>
+    </a>
+  </div>
+  <table class="content-table">
+    <thead>
+    <tr>
+        <th>{{'testing.namedate' | translate }}</th>
+        <th>{{'testing.venue' | translate }}</th>
+        <th>{{'testing.ITN' | translate }}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let event of events" (click)="gotoEvent(event.id_db)">
+        <td>
+            {{ event.date }}
+        </td>
+        <td>
+            {{ event.venue }}
+        </td>
+        <td>
+            {{ event.venue }}
+        </td>
+    </tr>
+    </tbody>
+</table>
+</div>
+
+<nav *ngIf="_auth.isLoggedIn() && totalElements > pageSize">
+  <ul class="pagination">
+    <li class="page-item" [class.disabled]="currentPage == 1">
+      <a class="page-link" (click)="onPageChange(currentPage - 1)">{{'pages.previous' | translate }}</a>
+    </li>
+    <li class="page-item" *ngFor="let page of listOfPages">
+      <a class="page-link" (click)="onPageChange(page)" [class.active]="currentPage == page + 1">{{ currentPage + 1 }}</a>
+    </li>
+    <li class="page-item" [class.disabled]="isNextPageDisabled()">
+      <a class="page-link" (click)="onPageChange(currentPage + 1)">{{'pages.next' | translate }}</a>
+    </li>
+  </ul>
+</nav>

@@ -1,6 +1,19 @@
 {
-    "Title": "TennisHub",
-    "add": "Add",
+    "base": {
+        "title": "TennisHub",
+        "description": "TennisHub is a service for tennis coaches and players that helps you prepare for competitions and track your progress.",
+        "keywords": "tennis, tennishub",
+        "author": "TennisHub",
+        "language": "en-US",
+        "apple-mobile-web-app-capable": "yes",
+        "common": {
+            "add": "Add",
+            "mainWelcome": "Welcome to the website. Register to start using the service or log in to your account.",
+            "players": "Players",
+            "allTests": "All Completed Tests",
+            "beginTest": "Start Test"
+        }
+    },
     "nav": {
         "main": "Main",
         "grouptest": "Group Test",
@@ -12,7 +25,16 @@
     "user": {
         "username": "Username",
         "password": "Password",
-        "repeatpassword": "Repeat Password"
+        "repeatpassword": "Repeat Password",
+        "errormessage": {
+            "firstName": "Enter your first name",
+            "lastName": "Enter your last name",
+            "birthday": "Enter your date of birth",
+            "telEmail": "Enter your phone or email",
+            "username": "Username must be provided",
+            "password": "Password must be provided",
+            "mismatch": "Passwords do not match"
+        }
     },
     "person": {
         "firstname": "First Name",
@@ -30,5 +52,14 @@
             "female": "Female",
             "male": "Male"
         }
+    },
+    "testing": {
+        "date": "Date",
+        "venue": "Venue",
+        "ITN": "Individual Test Number"
+    },
+    "pages": {
+        "previous": "Previous",
+        "next": "Next"
     }
 }

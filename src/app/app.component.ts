@@ -8,8 +8,6 @@ import { Translate_Service } from './services/translate.service';
   templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit{
-  title = 'tennishub';
-  name = '';
   currentlang: string;
 
   constructor(public _auth: AuthService,
@@ -19,21 +17,10 @@ export class AppComponent implements OnInit{
               }
   
   ngOnInit(): void {
-    if(this._auth.isLoggedIn()){
-      this.getUser();
-    }
+    this._auth.getUser();
   }
 
-  getUser(): void {
-    this._api.getTypeRequest('api/user').subscribe((res: any) => {
-    this.name = res.person.first_name + ' ' + res.person.last_name;
-    } , err => {
-      console.log(err);
-    }
-    )};
-
   logout(): void {
-    console.log('logout');
     this._auth.clearStorage();
   }
 

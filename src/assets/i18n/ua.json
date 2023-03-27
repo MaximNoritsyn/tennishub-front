@@ -1,6 +1,19 @@
 {
-    "Title": "TennisHub",
-    "add": "Додати",
+    "base": {
+        "title": "TennisHub",
+        "description": "TennisHub - це сервіс для тренерів та гравців тенісу, який допоможе вам підготуватися до змагань, а також відслідковувати свій прогрес",
+        "keywords": "tennis, tennishub",
+        "author": "TennisHub",
+        "language": "uk-UA",
+        "apple-mobile-web-app-capable": "yes",
+        "common": {
+            "add": "Додати",
+            "mainWelcome": "Ласкаво просимо на сайт. Зареєструйтеся для початку користування або увійдіть в свій аккаунт",
+            "players": "Гравці",
+            "allTests": "Всі пройдені тести",
+            "beginTest": "Почати тест"
+        }
+    },
     "nav": {
         "main": "Головна",
         "grouptest": "Груповий тест",
@@ -39,5 +52,14 @@
             "female": "Жіноча",
             "male": "Чоловіча"
         }
+    },
+    "testing": {
+        "namedate": "Дата",
+        "venue": "Місце проведення",
+        "ITN": "Індивідуальний тестовий номер"
+    },
+    "pages": {
+        "previous": "Попередня",
+        "next": "Наступна"
     }
 }
