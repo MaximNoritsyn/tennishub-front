@@ -23,10 +23,10 @@ export class AuthService implements OnInit {
             return;
         }
         this._api.getTypeRequest('api/user').subscribe((res: any) => {
-        this.userInfo = res;
+            this.userInfo = res;
         } , err => {
-          console.log(err);
-          this.clearStorage();
+            console.log(err);
+            this.clearStorage();
         }
     )}
 
