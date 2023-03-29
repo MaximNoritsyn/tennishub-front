@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core'; 
 import { HttpClient } from '@angular/common/http'; 
 import { map } from 'rxjs/operators'; 
+import { firstValueFrom } from 'rxjs';
  
 @Injectable({ 
   providedIn: 'root' 
@@ -22,6 +23,12 @@ export class ApiService {
       return res; 
     })); 
   } 
+
+  async getTypeRequestAs(url: string): Promise<any> {
+    const observable$ = this.httpClient.get(this.REST_API_SERVER+url);
+    const promise$ = await firstValueFrom(observable$);
+    return promise$;
+  }
  
   postTypeRequest(url: string, payload: any) { 
     return this.httpClient.post(this.REST_API_SERVER+url, payload).pipe(map(res => { 

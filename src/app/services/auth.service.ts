@@ -1,34 +1,37 @@
-import { Injectable, OnInit } from '@angular/core'; 
+import { Injectable } from '@angular/core'; 
 import { ApiService } from './api.service';
  
 @Injectable({ 
     providedIn: 'root' 
 }) 
-export class AuthService implements OnInit { 
+export class AuthService { 
 
     userInfo: any;
+    userLoaded: Promise<boolean>;
     
     constructor(private _api: ApiService) { 
-        
+        this.userLoaded = new Promise<boolean>((resolve) => {
+            if (this.isLoggedIn()) {
+              this.getUser().then(() => {
+                resolve(true);
+              });
+            } else {
+              resolve(true);
+            }
+          });
     } 
 
-    ngOnInit(): void {
-        if (this.isLoggedIn()) {
-            this.getUser();
-        }
-    }
- 
-    getUser(): void {
+    async getUser(): Promise<any> {
         if (!this.isLoggedIn()) {
-            return;
+          return;
         }
-        this._api.getTypeRequest('api/user').subscribe((res: any) => {
-            this.userInfo = res;
-        } , err => {
-            console.log(err);
-            this.clearStorage();
+        try {
+          const res = await this._api.getTypeRequestAs('api/user');
+          this.userInfo = res;
+        } catch (err) {
+          console.log(err);
         }
-    )}
+      }
 
     getUserName(): string {
         if (!this.isLoggedIn()) {
@@ -37,9 +40,8 @@ export class AuthService implements OnInit {
         if (this.userInfo) {
             return this.userInfo.person.first_name + ' ' + this.userInfo.person.last_name;
         }
-
-        return '';
         
+        return '';
     }
 
     getPersonId_Db(): string {
@@ -50,7 +52,6 @@ export class AuthService implements OnInit {
             return this.userInfo.person.id_db? this.userInfo.person.id_db : '';
         }
         return '';
-        
     }
 
     isCoach(): boolean {
@@ -62,6 +63,17 @@ export class AuthService implements OnInit {
         }
         return false;
     }
+
+    async isCoachAs(): Promise<boolean> {
+        await this.userLoaded;
+        if (!this.isLoggedIn()) {
+          return false;
+        }
+        if (this.userInfo) {
+          return this.userInfo.person.is_coach ? true : false;
+        }
+        return false;
+      }
      
     setDataInLocalStorage(variableName:string, data:string): void { 
         localStorage.setItem(variableName, data); 

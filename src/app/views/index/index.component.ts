@@ -24,34 +24,33 @@ export class IndexComponent implements OnInit {
               public _router: Router
               ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.loadArrays()
   }
 
-  getPlayers() {
-    this._api.getTypeRequestParams('api/players', {page: this.currentPage}).subscribe((data: any) => {
-      this.players = data.results;
-      this.totalElements = data.count;
-      this.loadPages();
-    });
-  };
-
-  getEvents() {
-    this._api.getTypeRequestParams('api/tests', {page: this.currentPage}).subscribe((data: any) => {
-      this.events = data.results;
-      this.totalElements = data.count;
-    });
-  }
-
-  loadArrays() {
+  async loadArrays(): Promise<void> {
     if (this._auth.isLoggedIn()) {
-      if (this._auth.isCoach()) {
-        this.getPlayers();
+      if (await this._auth.isCoachAs()) {
+        await this.getPlayers();
       } else {
-        this.getEvents();
+        await this.getEvents();
       }
     }
   }
+  
+  async getPlayers() {
+    const data: any = await this._api.getTypeRequestParams('api/players', {page: this.currentPage}).toPromise();
+    this.players = data.result;
+    this.totalElements = data.count;
+    this.loadPages();
+  };
+  
+  async getEvents() {
+    const data: any = await this._api.getTypeRequestParams('api/tests', {page: this.currentPage}).toPromise();
+    this.events = data.results;
+    this.totalElements = data.count;
+  }
+
 
   onPageChange(page: number) {
     this.currentPage = page;

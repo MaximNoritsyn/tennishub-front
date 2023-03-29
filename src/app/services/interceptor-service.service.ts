@@ -13,8 +13,7 @@ import { AuthService } from './auth.service';
 export class InterceptorService { 
  
   constructor( 
-    private router: Router, 
-    private _auth: AuthService 
+    private router: Router
   ) { 
   } 
  
@@ -27,7 +26,7 @@ export class InterceptorService {
     } 
     request = request.clone({ headers: request.headers.set('Accept', 'application/json') }).clone({ 
       setHeaders: { 
-        Authorization: `Bearer ${this._auth.getToken()}` 
+        Authorization: `Bearer ${localStorage.getItem('token')}` 
       } 
     });     
  
