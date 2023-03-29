@@ -60,6 +60,10 @@ export class LoginComponent implements OnInit {
       formGroup.get('email')?.setErrors({ required: true });
       formGroup.get('tel')?.setErrors({ required: true });
     }
+    else {
+      formGroup.get('email')?.setErrors(null);
+      formGroup.get('tel')?.setErrors(null);
+    }
   }
 
   login(): void{ 

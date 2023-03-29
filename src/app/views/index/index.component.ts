@@ -13,7 +13,7 @@ export class IndexComponent implements OnInit {
 
   currentPage = 1;
   totalElements = 0;
-  pageSize = 10;
+  pageSize = 1;
   listOfPages: number[] = [];
 
   players: any[] = [];

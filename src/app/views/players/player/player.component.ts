@@ -12,7 +12,6 @@ import { AuthService } from 'src/app/services/auth.service';
 export class PlayerComponent implements OnInit {
 
   id_db: string = '';
-  player: any = {};
 
   personForm: FormGroup;
 
@@ -21,22 +20,15 @@ export class PlayerComponent implements OnInit {
     public _auth: AuthService,
     public _router: Router,
     private avtiveRoute: ActivatedRoute) {
-    this.player = {
-      id_db: '',
-      first_name: '',
-      last_name: '',
-      email: '',
-      phone: '',
-      birth_date: '',
-      sex: 'M'
-    }
     this.personForm = this.fb.group({
+      id_db: [''],
       first_name: ['', Validators.required],
       last_name: ['', Validators.required],
       email: [''],
       tel: [''],
       birthday: ['', Validators.required],
-      sex: ['']}, 
+      sex: ['M'], 
+      is_coach: [false]}, 
       {validator: this.emailTelValidator})
   }
 
@@ -48,14 +40,14 @@ export class PlayerComponent implements OnInit {
       
       if (this.id_db !== '') {
         this._api.getTypeRequestParams('api/player/', { id_db: this.id_db }).subscribe((res: any) => {
-          this.player = res;
+          this.personForm.setValue(res);
         });
       }
     });
   }
 
   savePlayer() {
-    this._api.postTypeRequest('api/player', this.player).subscribe((res: any) => {
+    this._api.postTypeRequest('api/player', this.personForm.value).subscribe((res: any) => {
       this._router.navigate(['/'])
     }, err => {
       console.log(err)
@@ -70,6 +62,10 @@ export class PlayerComponent implements OnInit {
     if (email === '' && tel === '') {
       formGroup.get('email')?.setErrors({ required: true });
       formGroup.get('tel')?.setErrors({ required: true });
+    }
+    else {
+      formGroup.get('email')?.setErrors(null);
+      formGroup.get('tel')?.setErrors(null);
     }
   }
 

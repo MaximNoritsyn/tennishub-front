@@ -8,6 +8,8 @@
         "apple-mobile-web-app-capable": "yes",
         "common": {
             "add": "Add",
+            "create": "Create",
+            "save": "Save",
             "mainWelcome": "Welcome to the website. Register to start using the service or log in to your account.",
             "players": "Players",
             "allTests": "All Completed Tests",

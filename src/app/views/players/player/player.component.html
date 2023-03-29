@@ -1,7 +1,7 @@
 <form class="edit-form" [formGroup] = 'personForm' (ngSubmit) = 'savePlayer()'>
   <div>
     <label for="first_name">{{ 'person.firstname' | translate }}</label>
-    <input type="text" formControlName="first_name" id="first_name" required [(ngModel)]="player.first_name">
+    <input type="text" formControlName="first_name" id="first_name" required>
   </div>
   <div *ngIf="personForm.get('firstName')?.errors && personForm.get('firstName')?.touched">
     {{ 'user.errormessege.firstName' | translate }}
@@ -9,7 +9,7 @@
 
   <div>
     <label for="last_name">{{ 'person.lastname' | translate }}</label>
-    <input type="text" formControlName="last_name" id="last_name" required [(ngModel)]="player.last_name">
+    <input type="text" formControlName="last_name" id="last_name" required>
   </div>
   <div *ngIf="personForm.get('lastName')?.errors && personForm.get('lastName')?.touched">
     {{ 'user.errormessege.lastName' | translate }}
@@ -17,7 +17,7 @@
 
   <div>
     <label for="birthday">{{ 'person.birthday' | translate }}</label>
-    <input type="date" formControlName="birthday" id="birthday" required [(ngModel)]="player.birthday">
+    <input type="date" formControlName="birthday" id="birthday" required>
   </div>
   <div *ngIf="personForm.get('birthday')?.errors">
     {{ 'user.errormessege.birthday' | translate }}
@@ -26,27 +26,28 @@
   <div>
     <label for="sex">{{ 'person.sex' | translate }}</label>
     <div class="point-boxes" id="sex">
-      <input type="radio" id="female" formControlName="sex" value="F" [(ngModel)]="player.sex">
+      <input type="radio" id="female" formControlName="sex" value="F">
       <label for="female" class="point-box">Жіноча</label>
       <br>
-      <input type="radio" id="male" formControlName="sex" value="M" [(ngModel)]="player.sex">
+      <input type="radio" id="male" formControlName="sex" value="M">
       <label for="male" class="point-box">Чоловіча</label>
     </div>
   </div>
 
   <div>
     <label for="email">{{ 'person.email' | translate }}</label>
-    <input type="email" formControlName="email" id="email" [(ngModel)]="player.email">
+    <input type="email" formControlName="email" id="email">
   </div>
 
   <div>
     <label for="tel">{{ 'person.phone' | translate }}</label>
-    <input type="text" formControlName="tel" id="tel" placeholder="3801234567890" [(ngModel)]="player.tel">
+    <input type="text" formControlName="tel" id="tel" placeholder="3801234567890">
   </div>
 
   <div *ngIf="personForm.get('tel')?.errors && personForm.get('tel')?.touched">
     {{ 'user.errormessege.telEmail' | translate }}
   </div>
 
-  <button type="submit" [disabled] = '!this.personForm.valid'>Створити</button>
+  <button type="submit" [disabled] = '!this.personForm.valid' *ngIf="id_db=='new'">{{'base.common.create' | translate}}</button>
+  <button type="submit" [disabled] = '!this.personForm.valid' *ngIf="id_db!='new'">{{'base.common.save' | translate}}</button>
 </form>

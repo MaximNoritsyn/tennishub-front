@@ -399,3 +399,40 @@ input[readonly] {
   flex-direction: column;
   align-items: center;
 }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination li {
+  display: inline-block;
+  margin: 0 5px;
+}
+
+.pagination li.page-item.disabled a.page-link {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.pagination li.page-item a.page-link {
+  display: block;
+  padding: 0.5rem 0.75rem;
+  color: var(--fclr30);
+  background-color: var(--clr30);
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  border: 3px solid var(--fclr10);
+  cursor: pointer;
+}
+
+.pagination li.page-item a.active {
+  border: 3px solid var(--clr10);
+}
+
+.pagination li.page-item a.page-link:hover {
+  background-color: var(--clr10);
+  color: var(--fclr10);
+}
