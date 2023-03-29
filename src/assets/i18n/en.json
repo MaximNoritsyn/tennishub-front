@@ -29,10 +29,6 @@
         "password": "Password",
         "repeatpassword": "Repeat Password",
         "errormessage": {
-            "firstName": "Enter your first name",
-            "lastName": "Enter your last name",
-            "birthday": "Enter your date of birth",
-            "telEmail": "Enter your phone or email",
             "username": "Username must be provided",
             "password": "Password must be provided",
             "mismatch": "Passwords do not match"
@@ -53,6 +49,12 @@
         "sexes": {
             "female": "Female",
             "male": "Male"
+        },
+        "errormessage": {
+            "firstName": "Enter your first name",
+            "lastName": "Enter your last name",
+            "birthday": "Enter your date of birth",
+            "telEmail": "Enter your phone or email"
         }
     },
     "testing": {

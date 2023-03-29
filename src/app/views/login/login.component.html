@@ -23,7 +23,7 @@
         <input type="text" id="firstName" formControlName="firstName">
     </div>
     <div *ngIf="signUpForm.get('firstName')?.errors && signUpForm.get('firstName')?.touched">
-      {{ 'user.errormessege.firstName' | translate }}
+      {{ 'person.errormessage.firstName' | translate }}
     </div>
 
     <div>
@@ -31,7 +31,7 @@
         <input type="text" id="lastName" formControlName="lastName">
     </div>
     <div *ngIf="signUpForm.get('lastName')?.errors && signUpForm.get('lastName')?.touched">
-      {{ 'user.errormessege.lastName' | translate }}
+      {{ 'person.errormessage.lastName' | translate }}
     </div>
 
     <div>
@@ -39,7 +39,7 @@
         <input type="date" id="birthday" formControlName="birthday">
     </div>
     <div *ngIf="signUpForm.get('birthday')?.errors">
-      {{ 'user.errormessege.birthday' | translate }}
+      {{ 'person.errormessage.birthday' | translate }}
     </div>
 
     <div>
@@ -63,7 +63,7 @@
         <input type="text" id="tel" placeholder="3801234567890" formControlName="tel">
     </div>
     <div *ngIf="signUpForm.get('tel')?.errors && signUpForm.get('tel')?.touched">
-      {{ 'user.errormessege.telEmail' | translate }}
+      {{ 'person.errormessage.telEmail' | translate }}
     </div>
 
     <div>
@@ -71,7 +71,7 @@
         <input type="text" id="username" formControlName="username">
     </div>
     <div *ngIf="signUpForm.get('username')?.errors && signUpForm.get('username')?.touched">
-      {{ 'user.errormessege.username' | translate }}
+      {{ 'user.errormessage.username' | translate }}
     </div>
 
     <div>
@@ -79,7 +79,7 @@
         <input type="password" id="password" formControlName="password">
     </div>
     <div *ngIf="signUpForm.get('password')?.errors && signUpForm.get('password')?.touched">
-      {{ 'user.errormessege.password' | translate }}
+      {{ 'user.errormessage.password' | translate }}
     </div>
 
     <div>
@@ -87,7 +87,7 @@
         <input type="password" id="repeat_password" id="repeat_password" formControlName="repeat_password">
     </div>
     <div *ngIf="signUpForm.get('repeat_password')?.errors && signUpForm.get('repeat_password')?.touched">
-      {{ 'user.errormessege.mismatch' | translate }}
+      {{ 'user.errormessage.mismatch' | translate }}
     </div>
 
     <div>

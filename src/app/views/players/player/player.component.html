@@ -3,16 +3,16 @@
     <label for="first_name">{{ 'person.firstname' | translate }}</label>
     <input type="text" formControlName="first_name" id="first_name" required>
   </div>
-  <div *ngIf="personForm.get('firstName')?.errors && personForm.get('firstName')?.touched">
-    {{ 'user.errormessege.firstName' | translate }}
+  <div *ngIf="personForm.get('first_name')?.errors && personForm.get('first_name')?.touched">
+    {{ 'person.errormessage.firstName' | translate }}
   </div>
 
   <div>
     <label for="last_name">{{ 'person.lastname' | translate }}</label>
     <input type="text" formControlName="last_name" id="last_name" required>
   </div>
-  <div *ngIf="personForm.get('lastName')?.errors && personForm.get('lastName')?.touched">
-    {{ 'user.errormessege.lastName' | translate }}
+  <div *ngIf="personForm.get('last_name')?.errors && personForm.get('last_name')?.touched">
+    {{ 'person.errormessage.lastName' | translate }}
   </div>
 
   <div>
@@ -20,17 +20,17 @@
     <input type="date" formControlName="birthday" id="birthday" required>
   </div>
   <div *ngIf="personForm.get('birthday')?.errors">
-    {{ 'user.errormessege.birthday' | translate }}
+    {{ 'person.errormessage.birthday' | translate }}
   </div>
 
   <div>
     <label for="sex">{{ 'person.sex' | translate }}</label>
     <div class="point-boxes" id="sex">
       <input type="radio" id="female" formControlName="sex" value="F">
-      <label for="female" class="point-box">Жіноча</label>
+      <label for="female" class="point-box">{{ 'person.sexes.female' | translate }}</label>
       <br>
       <input type="radio" id="male" formControlName="sex" value="M">
-      <label for="male" class="point-box">Чоловіча</label>
+      <label for="male" class="point-box">{{ 'person.sexes.male' | translate }}</label>
     </div>
   </div>
 
@@ -45,7 +45,7 @@
   </div>
 
   <div *ngIf="personForm.get('tel')?.errors && personForm.get('tel')?.touched">
-    {{ 'user.errormessege.telEmail' | translate }}
+    {{ 'person.errormessage.telEmail' | translate }}
   </div>
 
   <button type="submit" [disabled] = '!this.personForm.valid' *ngIf="id_db=='new'">{{'base.common.create' | translate}}</button>
