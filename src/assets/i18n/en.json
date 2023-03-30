@@ -62,6 +62,12 @@
         "venue": "Venue",
         "ITN": "Individual Test Number"
     },
+    "grouptest": {
+        "newtest": "Create New Group Test",
+        "list": "List of Group Tests",
+        "date": "Date",
+        "venue": "Venue"
+        },
     "pages": {
         "previous": "Previous",
         "next": "Next"

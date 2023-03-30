@@ -1,0 +1,66 @@
+<div>
+<div>
+  <ng-container *ngIf="mode !== 'new'">
+    <h3>{{group_test.venue}} - {{group_test.date}}</h3>
+  </ng-container>
+</div>
+<div class="wrapper" fxLayout="column" fxLayoutAlign="center center">
+  <form id="form-coach-test" method="post" action="/coachtesting/{{group_test.id_db}}/edit">
+
+    <div>
+      <label for="assessor">Інспектор:</label>
+      <input type="text" id="assessor" readonly name="assessor" [value]="group_test.assessor" required>
+    </div>
+
+    <div>
+      <label for="v_date">Дата:</label>
+      <input type="date" id="v_date" readonly name="v_date" [value]="group_test.date" required>
+    </div>
+
+    <div>
+      <label for="venue">Місце проведення:</label>
+      <input type="text" id="venue" readonly name="venue" [value]="group_test.venue" required>
+    </div>
+
+    <div id="search-div" class="search-block" style="display: none;">
+      <div>
+        <label for="search">
+          Пошук
+        </label>
+        <input type="text" id="search" name="search" placeholder="Введіть Ім'я або телефон, email" />
+      </div>
+      <div>
+        <label for="persons-list">Доступні спортсмени:</label>
+        <ul id="persons-list"></ul>
+      </div>
+    </div>
+
+    <div id="message"></div>
+    <button id="edit-coach-test">Редагувати</button>
+  </form>
+
+  <div class="tasks-wrapper">
+    <div id="gsd" class="task-box">Глибина ударів з відскоку</div>
+    <div id="vd" class="task-box">Глибина ударів з льоту</div>
+    <div id="gsa" class="task-box">Точність ударів з відскоку</div>
+    <div id="serve" class="task-box">Подача</div>
+    <div id="mobility" class="task-box">Мобільність</div>
+    <div id="results" class="task-box">Результати</div>
+  </div>
+
+  <table class="content-table">
+    <thead>
+      <tr>
+        <th>Тестуючий</th>
+        <th>ГУзВ</th>
+        <th>ГУзЛ</th>
+        <th>ТУзВ</th>
+        <th>Подача</th>
+        <th>Мобільн.</th>
+      </tr>
+    </thead>
+    <tbody id="players-list">
+    </tbody>
+  </table>
+</div>
+</div>

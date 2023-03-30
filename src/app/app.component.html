@@ -11,7 +11,7 @@
     <nav class="navigation desktop-only">
         <ul>
             <li><a [routerLink]="['/']"> {{'nav.main' | translate}} </a></li>
-            <li><a [routerLink]="['/grouptestdashboard']" *ngIf="_auth.isLoggedIn()">{{'nav.grouptest' | translate}}</a></li>
+            <li><a [routerLink]="['/list-grouptest']" *ngIf="_auth.isLoggedIn()">{{'nav.grouptest' | translate}}</a></li>
         </ul>
         <div class="right-menu-block">
             <ul *ngIf="_auth.isLoggedIn" class="user-nav">
@@ -32,7 +32,7 @@
     <nav class="navigation mobile-only">
         <ul>
             <li><a [routerLink]="['/']">{{'nav.main' | translate}}</a></li>
-            <li><a [routerLink]="['/grouptestdashboard']" *ngIf="_auth.isLoggedIn()">{{'nav.grouptestshort' | translate}}</a></li>
+            <li><a [routerLink]="['/list-grouptest']" *ngIf="_auth.isLoggedIn()">{{'nav.grouptestshort' | translate}}</a></li>
         </ul>
         <div class="right-menu-block">
             <ul class="user-nav" *ngIf="_auth.isLoggedIn">

@@ -16,7 +16,8 @@ import { AuthService } from './services/auth.service';
 import { ApiService } from './services/api.service';
 import { IndexComponent } from './views/index/index.component';
 import { PlayerComponent } from './views/players/player/player.component';
-import { GrouptestDashboardComponent } from './views/grouptest-dashboard/grouptest-dashboard.component';
+import { GrouptestDashboardComponent } from './views/grouptest/grouptest-dashboard/grouptest-dashboard.component';
+import { ListGrouptestComponent } from './views/grouptest/list-grouptest/list-grouptest.component';
 
 registerLocaleData(localeUk);
 
@@ -30,7 +31,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     LoginComponent,
     IndexComponent,
     PlayerComponent,
-    GrouptestDashboardComponent
+    GrouptestDashboardComponent,
+    ListGrouptestComponent
   ],
   imports: [
     BrowserModule,
