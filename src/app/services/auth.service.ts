@@ -28,7 +28,9 @@ export class AuthService {
         try {
           const res = await this._api.getTypeRequestAs('api/user');
           this.userInfo = res;
-        } catch (err) {
+        } 
+        catch (err: any) {
+          this.clearStorage();
           console.log(err);
         }
       }
