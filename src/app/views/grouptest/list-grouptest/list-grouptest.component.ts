@@ -26,9 +26,11 @@ export class ListGrouptestComponent implements OnInit {
   }
 
   async loadGroupTests(): Promise<void> {
-    const data: any = await this._api.getTypeRequestParams('api/coach_tests', {page: this.currentPage}).toPromise();
-    this.group_tests = data.results;
-    this.totalElements = data.count;
+    this._api.getTypeRequestParams('api/group_tests', {page: this.currentPage}).subscribe((data: any) => {
+      this.group_tests = data.result;
+      this.totalElements = data.count;
+      this.loadPages();
+    });
   }
 
   onTestClick(testId: string): void {

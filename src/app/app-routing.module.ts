@@ -13,8 +13,8 @@ const routes: Routes = [
   {path: '', component: IndexComponent},
   {path: 'player/:id_db', canActivate: [IsLoggedGuard], component: PlayerComponent},
   {path: 'list-grouptest', canActivate: [IsLoggedGuard], component: ListGrouptestComponent},
-  {path: 'grouptestdashboard/:id', canActivate: [IsLoggedGuard], component: GrouptestDashboardComponent},
-  {path: 'grouptestdashboard/:id/:task', canActivate: [IsLoggedGuard], component: GrouptestDashboardComponent}
+  {path: 'grouptestdashboard/:id_db', canActivate: [IsLoggedGuard], component: GrouptestDashboardComponent},
+  {path: 'grouptestdashboard/:id_db/:task', canActivate: [IsLoggedGuard], component: GrouptestDashboardComponent}
 ];
 
 @NgModule({

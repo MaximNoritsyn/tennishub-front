@@ -19,7 +19,7 @@ export class PlayerComponent implements OnInit {
     public fb: FormBuilder,
     public _auth: AuthService,
     public _router: Router,
-    private avtiveRoute: ActivatedRoute) {
+    private _avtiveRoute: ActivatedRoute) {
     this.personForm = this.fb.group({
       id_db: [''],
       first_name: ['', Validators.required],
@@ -33,7 +33,7 @@ export class PlayerComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.avtiveRoute.params.subscribe((params: Params) => {
+    this._avtiveRoute.params.subscribe((params: Params) => {
       if (params['id_db'] !== 'new') {
         this.id_db = params['id_db'];
       }

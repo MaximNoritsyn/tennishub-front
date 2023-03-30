@@ -5,24 +5,24 @@
   </ng-container>
 </div>
 <div class="wrapper" fxLayout="column" fxLayoutAlign="center center">
-  <form id="form-coach-test" method="post" action="/coachtesting/{{group_test.id_db}}/edit">
+  <form id="form-coach-test" [ngClass]="{ 'edit-form': mode !== 'read' }" [formGroup] = 'groupForm' (ngSubmit) = 'saveGroupTest()'>
 
     <div>
       <label for="assessor">Інспектор:</label>
-      <input type="text" id="assessor" readonly name="assessor" [value]="group_test.assessor" required>
+      <input type="text" id="assessor" [readonly] = "mode == 'read'" name="assessor" formControlName="assessor">
     </div>
 
     <div>
-      <label for="v_date">Дата:</label>
-      <input type="date" id="v_date" readonly name="v_date" [value]="group_test.date" required>
+      <label for="date">Дата:</label>
+      <input type="date" id="date" [readonly] = "mode == 'read'" name="date" formControlName="date">
     </div>
 
     <div>
       <label for="venue">Місце проведення:</label>
-      <input type="text" id="venue" readonly name="venue" [value]="group_test.venue" required>
+      <input type="text" id="venue" [readonly] = "mode == 'read'" name="venue" formControlName="venue">
     </div>
 
-    <div id="search-div" class="search-block" style="display: none;">
+    <div id="search-div" class="search-block" *ngIf="mode !== 'read'">
       <div>
         <label for="search">
           Пошук
@@ -36,16 +36,29 @@
     </div>
 
     <div id="message"></div>
-    <button id="edit-coach-test">Редагувати</button>
+    <button id="edit-coach-test" *ngIf="mode !== 'read'" [disabled] = '!this.groupForm.valid'>Зберегти</button>
+    <button id="edit-coach-test" *ngIf="mode == 'read'">Редагувати</button>
   </form>
 
   <div class="tasks-wrapper">
-    <div id="gsd" class="task-box">Глибина ударів з відскоку</div>
-    <div id="vd" class="task-box">Глибина ударів з льоту</div>
-    <div id="gsa" class="task-box">Точність ударів з відскоку</div>
-    <div id="serve" class="task-box">Подача</div>
-    <div id="mobility" class="task-box">Мобільність</div>
-    <div id="results" class="task-box">Результати</div>
+    <div id="gsd" class="task-box" [ngClass]="{ 'current-task-box': task == 'gsd' }"
+    (click)="useTask('gsd')">
+      Глибина ударів з відскоку</div>
+    <div id="vd" class="task-box" [ngClass]="{ 'current-task-box': task == 'vd' }"
+    (click)="useTask('vd')">
+      Глибина ударів з льоту</div>
+    <div id="gsa" class="task-box" [ngClass]="{ 'current-task-box': task == 'gsa' }"
+    (click)="useTask('gsa')">
+      Точність ударів з відскоку</div>
+    <div id="serve" class="task-box" [ngClass]="{ 'current-task-box': task == 'serve' }"
+    (click)="useTask('serve')">
+      Подача</div>
+    <div id="mobility" class="task-box" [ngClass]="{ 'current-task-box': task == 'mobility' }"
+    (click)="useTask('mobility')">
+      Мобільність</div>
+    <div id="results" class="task-box" [ngClass]="{ 'current-task-box': task == 'results' }"
+    (click)="useTask('results')">
+      Результати</div>
   </div>
 
   <table class="content-table">
@@ -59,7 +72,7 @@
         <th>Мобільн.</th>
       </tr>
     </thead>
-    <tbody id="players-list">
+    <tbody id="players-list" *ngFor="let player of players" (click)="onClickBeginTest(player.id_db)">
     </tbody>
   </table>
 </div>
