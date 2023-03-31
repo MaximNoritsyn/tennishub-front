@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ApiService } from '../../../services/api.service';
 import { AuthService } from '../../../services/auth.service';
@@ -17,7 +17,9 @@ export class GrouptestDashboardComponent implements OnInit {
   groupForm: FormGroup;
 
   group_test: any = {};
-  players: any = [];
+  coach_tests: any = [];
+  newplayers: any = [];
+  persons: any = [];
 
   constructor(
     public fb: FormBuilder,
@@ -31,7 +33,7 @@ export class GrouptestDashboardComponent implements OnInit {
       assessor: ['', Validators.required],
       date: ['', Validators.required],
       venue: ['', Validators.required],
-      players: this.fb.array([])
+      searchtext: ['']
     })
   }
 
@@ -39,8 +41,7 @@ export class GrouptestDashboardComponent implements OnInit {
     this._avtiveRoute.params.subscribe((params: Params) => {
       if (params['id_db'] !== 'new') {
         this.mode = 'read';
-        this._api.getTypeRequestParams('api/group_test/', {'id_db': params['id_db']}).subscribe((data: any) => {
-          console.log('data', data);
+        this._api.getTypeRequestParams('api/group_test/', { 'id_db': params['id_db'] }).subscribe((data: any) => {
           this.group_test = data;
           this.fillFields(
             data['assessor'],
@@ -48,13 +49,22 @@ export class GrouptestDashboardComponent implements OnInit {
             data['id_db'],
             data['venue']
           );
+          this.fillCoachTests();
+          this.onSearchChange();
         });
       }
       else {
         this.mode = 'new';
         this.prepareFillEmptyFields();
-      }
+      };
     });
+  }
+
+  fillCoachTests() {
+    this.coach_tests = [];
+    this._api.getTypeRequestParams('api/coach_tests', { 'group_test_id': this.group_test.id_db }).subscribe((data: any) => {
+      this.coach_tests = data;
+    })
   }
 
   async prepareFillEmptyFields() {
@@ -76,48 +86,76 @@ export class GrouptestDashboardComponent implements OnInit {
     id_db: string = '',
     venue: string = '',
     players: any = []
-    ) 
-    {
+  ) {
     this.groupForm.setValue(
       {
         'id_db': id_db,
         'assessor': assessor,
         'date': date_v,
         'venue': venue,
-        "players": players
+        'searchtext': ''
       });
   }
 
-
-useTask(task: string) {
-  this.task = task;
-}
-
-onClickBeginTest(idPlayer: string) {
-  console.log('onClickBeginTest', idPlayer);
-}
-
-saveGroupTest() {
-  var data = this.groupForm.value;
-  this.fillFields(
-    data['assessor'],
-    data['date'],
-    data['id_db'],
-    data['venue'],
-    this.players
-  );
-  console.log('saveGroupTest', this.groupForm.value);
-  console.log("this.mode", this.mode)
-  this._api.postTypeRequest('api/group_tests', this.groupForm.value).subscribe(
-    (data: any) => {
-      console.log('saveGroupTest', data);
-      if (data['status'] === 'success' && this.mode==='new') {
-        this._router.navigate(['/grouptestdashboard', data['id_db']]);
-      }
-      else {
-        this.mode = 'read';
-      }
+  onSearchChange(): void {
+    var searchtext = this.groupForm.value.searchtext;
+    if (searchtext.length < 3) {
+      searchtext = '';
+    }
+    
+    this._api.getTypeRequestParams('api/persons', { 'search': searchtext }).subscribe((data: any) => {
+      this.persons = data.filter((person: any) => {
+        return !this.coach_tests.some((coach_test: any) => {
+          return coach_test.test_event.person.id_db === person.id_db;
+        });
+      });
     });
-}
+  }
+
+  useTask(task: string) {
+    this.task = task;
+  }
+
+  onClickBeginTest(idPlayer: string) {
+    console.log('onClickBeginTest', idPlayer);
+  }
+
+  onClickAddPlayer(person: any) {
+    this.persons.splice(this.persons.indexOf(person), 1);
+    this.newplayers.push(person);
+  }
+
+  saveGroupTest() {
+    if (this.mode === 'read') {
+      this.mode = 'edit';
+      return;
+    }
+
+    let playerIds = [];
+    for (let player of this.newplayers) {
+      playerIds.push(player.id_db);
+    }
+
+    const groupTest = {
+      id_db: this.groupForm.value.id_db,
+      assessor: this.groupForm.value.assessor,
+      date: this.groupForm.value.date,
+      venue: this.groupForm.value.venue,
+      players: playerIds
+    };
+
+
+    this._api.postTypeRequest('api/group_tests', groupTest).subscribe(
+      (data: any) => {
+        if (data['status'] === 'success' && this.mode === 'new') {
+          this._router.navigate(['/grouptestdashboard', data['id_db']]);
+        }
+        else {
+          this.mode = 'read';
+          this.newplayers = [];
+          this.fillCoachTests()
+        }
+      });
+  }
 
 }

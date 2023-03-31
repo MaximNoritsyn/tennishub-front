@@ -1,43 +1,45 @@
 {
     "base": {
         "title": "TennisHub",
-        "description": "TennisHub is a service for tennis coaches and players that helps you prepare for competitions and track your progress.",
+        "description": "TennisHub is a service for tennis coaches and players that will help you prepare for competitions and track your progress",
         "keywords": "tennis, tennishub",
         "author": "TennisHub",
-        "language": "en-US",
+        "language": "uk-UA",
         "apple-mobile-web-app-capable": "yes",
         "common": {
             "add": "Add",
             "create": "Create",
             "save": "Save",
-            "mainWelcome": "Welcome to the website. Register to start using the service or log in to your account.",
+            "edit": "Edit",
+            "mainWelcome": "Welcome to the site. Register to start using or log in to your account",
             "players": "Players",
-            "allTests": "All Completed Tests",
-            "beginTest": "Start Test"
+            "allTests": "All completed tests",
+            "beginTest": "Start test",
+            "search": "Search"
         }
     },
     "nav": {
         "main": "Main",
-        "grouptest": "Group Test",
+        "grouptest": "Group test",
         "grouptestshort": "Group",
-        "login": "Log In",
-        "logout": "Log Out",
-        "register": "Sign Up"
+        "login": "Login",
+        "logout": "Logout",
+        "register": "Register"
     },
     "user": {
         "username": "Username",
         "password": "Password",
-        "repeatpassword": "Repeat Password",
+        "repeatpassword": "Repeat password",
         "errormessage": {
-            "username": "Username must be provided",
-            "password": "Password must be provided",
+            "username": "Username is required",
+            "password": "Password is required",
             "mismatch": "Passwords do not match"
         }
     },
     "person": {
-        "firstname": "First Name",
-        "lastname": "Last Name",
-        "birthday": "Date of Birth",
+        "firstname": "First name",
+        "lastname": "Last name",
+        "birthday": "Birthday",
         "sex": "Gender",
         "email": "Email",
         "phone": "Phone",
@@ -53,21 +55,48 @@
         "errormessage": {
             "firstName": "Enter your first name",
             "lastName": "Enter your last name",
-            "birthday": "Enter your date of birth",
+            "birthday": "Enter your birthday",
             "telEmail": "Enter your phone or email"
         }
     },
     "testing": {
-        "date": "Date",
+        "namedate": "Date",
         "venue": "Venue",
         "ITN": "Individual Test Number"
     },
     "grouptest": {
-        "newtest": "Create New Group Test",
-        "list": "List of Group Tests",
         "date": "Date",
-        "venue": "Venue"
+        "venue": "Venue",
+        "assessor": "Assessor",
+        "form": {
+            "newtest": "Create new test",
+            "list": "List of group tests",
+            "availableplayers": "Available players",
+            "searchplaceholder": "Enter name, phone, or email"
         },
+        "errormessage": {
+            "date": "Enter the date of the test",
+            "venue": "Enter the venue of the test",
+            "assessor": "Enter the assessor of the test"
+        }
+    },
+    "itn": {
+        "tasks": {
+            "gsd": "Groundstroke depth",
+            "gsdshort": "Ground depth",
+            "vd": "Volley depth",
+            "vdshort": "Volley depth",
+            "gsa": "Groundstroke accuracy",
+            "gsashort": "Ground accuracy",
+            "serve": "Serve",
+            "serveshort": "Serve",
+            "mobility": "Mobility",
+            "mobilityshort": "Mobility",
+            "results": "Results",
+            "resultsshort": "Results"
+        },
+        "tester": "Tester"
+    },
     "pages": {
         "previous": "Previous",
         "next": "Next"

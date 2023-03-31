@@ -1,79 +1,113 @@
-<div>
-<div>
-  <ng-container *ngIf="mode !== 'new'">
-    <h3>{{group_test.venue}} - {{group_test.date}}</h3>
-  </ng-container>
-</div>
-<div class="wrapper" fxLayout="column" fxLayoutAlign="center center">
-  <form id="form-coach-test" [ngClass]="{ 'edit-form': mode !== 'read' }" [formGroup] = 'groupForm' (ngSubmit) = 'saveGroupTest()'>
+<div style="
+display: flex;
+flex-wrap: nowrap;
+align-items: center;
+flex-direction: column;">
+  <div>
+    <ng-container *ngIf="mode !== 'new'">
+      <h3>{{group_test.venue}} - {{group_test.date}}</h3>
+    </ng-container>
+  </div>
+  <form id="form-coach-test" [ngClass]="{ 'edit-form': mode !== 'read' }" [formGroup]='groupForm'
+    (ngSubmit)='saveGroupTest()'>
 
     <div>
-      <label for="assessor">Інспектор:</label>
-      <input type="text" id="assessor" [readonly] = "mode == 'read'" name="assessor" formControlName="assessor">
+      <label for="assessor">{{'grouptest.assessor' | translate}}</label>
+      <input type="text" id="assessor" [readonly]="mode == 'read'" name="assessor" formControlName="assessor">
+    </div>
+    <div *ngIf="groupForm.get('assessor')?.errors && groupForm.get('assessor')?.touched">
+      {{ 'grouptest.errormessage.assessor' | translate }}
     </div>
 
     <div>
-      <label for="date">Дата:</label>
-      <input type="date" id="date" [readonly] = "mode == 'read'" name="date" formControlName="date">
+      <label for="date">{{'grouptest.date' | translate}}</label>
+      <input type="date" id="date" [readonly]="mode == 'read'" name="date" formControlName="date">
+    </div>
+    <div *ngIf="groupForm.get('date')?.errors && groupForm.get('date')?.touched">
+      {{ 'grouptest.errormessage.date' | translate }}
     </div>
 
     <div>
-      <label for="venue">Місце проведення:</label>
-      <input type="text" id="venue" [readonly] = "mode == 'read'" name="venue" formControlName="venue">
+      <label for="venue">{{'grouptest.venue' | translate}}</label>
+      <input type="text" id="venue" [readonly]="mode == 'read'" name="venue" formControlName="venue">
+    </div>
+    <div *ngIf="groupForm.get('venue')?.errors && groupForm.get('venue')?.touched">
+      {{ 'grouptest.errormessage.venue' | translate }}
     </div>
 
     <div id="search-div" class="search-block" *ngIf="mode !== 'read'">
       <div>
         <label for="search">
-          Пошук
+          {{'base.common.search' | translate}}
         </label>
-        <input type="text" id="search" name="search" placeholder="Введіть Ім'я або телефон, email" />
+        <input type="text" id="search" name="search" placeholder="{{'grouptest.form.searchplaceholder' | translate}}" formControlName="searchtext"
+          (input)="onSearchChange()" />
       </div>
       <div>
-        <label for="persons-list">Доступні спортсмени:</label>
-        <ul id="persons-list"></ul>
+        <label for="persons-list">{{'grouptest.form.availableplayers' | translate}}</label>
+        <ul id="persons-list">
+          <li *ngFor="let person of persons" (click)="onClickAddPlayer(person)">
+            {{person.first_name}} {{person.last_name}}
+          </li>
+        </ul>
       </div>
     </div>
 
     <div id="message"></div>
-    <button id="edit-coach-test" *ngIf="mode !== 'read'" [disabled] = '!this.groupForm.valid'>Зберегти</button>
-    <button id="edit-coach-test" *ngIf="mode == 'read'">Редагувати</button>
+    <button id="edit-coach-test" *ngIf="mode !== 'read'" [disabled]='!this.groupForm.valid'>{{'base.common.save' | translate}}</button>
+    <button id="edit-coach-test" *ngIf="mode == 'read'">{{'base.common.edit' | translate}}</button>
   </form>
 
   <div class="tasks-wrapper">
-    <div id="gsd" class="task-box" [ngClass]="{ 'current-task-box': task == 'gsd' }"
-    (click)="useTask('gsd')">
-      Глибина ударів з відскоку</div>
-    <div id="vd" class="task-box" [ngClass]="{ 'current-task-box': task == 'vd' }"
-    (click)="useTask('vd')">
-      Глибина ударів з льоту</div>
-    <div id="gsa" class="task-box" [ngClass]="{ 'current-task-box': task == 'gsa' }"
-    (click)="useTask('gsa')">
-      Точність ударів з відскоку</div>
-    <div id="serve" class="task-box" [ngClass]="{ 'current-task-box': task == 'serve' }"
-    (click)="useTask('serve')">
-      Подача</div>
+    <div id="gsd" class="task-box" [ngClass]="{ 'current-task-box': task == 'gsd' }" (click)="useTask('gsd')">
+      {{'itn.tasks.gsd' | translate}}</div>
+    <div id="vd" class="task-box" [ngClass]="{ 'current-task-box': task == 'vd' }" (click)="useTask('vd')">
+      {{'itn.tasks.vd' | translate}}</div>
+    <div id="gsa" class="task-box" [ngClass]="{ 'current-task-box': task == 'gsa' }" (click)="useTask('gsa')">
+      {{'itn.tasks.gsa' | translate}}</div>
+    <div id="serve" class="task-box" [ngClass]="{ 'current-task-box': task == 'serve' }" (click)="useTask('serve')">
+      {{'itn.tasks.serve' | translate}}</div>
     <div id="mobility" class="task-box" [ngClass]="{ 'current-task-box': task == 'mobility' }"
-    (click)="useTask('mobility')">
-      Мобільність</div>
+      (click)="useTask('mobility')">
+      {{'itn.tasks.mobility' | translate}}</div>
     <div id="results" class="task-box" [ngClass]="{ 'current-task-box': task == 'results' }"
-    (click)="useTask('results')">
-      Результати</div>
+      (click)="useTask('results')">
+      {{'itn.tasks.results' | translate}}</div>
   </div>
 
   <table class="content-table">
     <thead>
       <tr>
-        <th>Тестуючий</th>
-        <th>ГУзВ</th>
-        <th>ГУзЛ</th>
-        <th>ТУзВ</th>
-        <th>Подача</th>
-        <th>Мобільн.</th>
+        <th>{{'itn.tester' | translate}}</th>
+        <th>{{'itn.tasks.gsdshort' | translate}}</th>
+        <th>{{'itn.tasks.vdshort' | translate}}</th>
+        <th>{{'itn.tasks.gsashort' | translate}}</th>
+        <th>{{'itn.tasks.serveshort' | translate}}</th>
+        <th>{{'itn.tasks.mobilityshort' | translate}}</th>
       </tr>
     </thead>
-    <tbody id="players-list" *ngFor="let player of players" (click)="onClickBeginTest(player.id_db)">
+    <tbody>
+      <tr *ngFor="let player of newplayers" class="new-player">
+        <td>{{player.first_name}} {{player.last_name}}</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr *ngFor="let coach_test of coach_tests" (click)="onClickBeginTest(coach_test.id_db)">
+        <td>{{coach_test.test_event.person.first_name}} {{coach_test.test_event.person.last_name}}</td>
+        <td *ngIf="coach_test.gsd">✅</td>
+        <td *ngIf="!coach_test.gsd">❌</td>
+        <td *ngIf="coach_test.vd">✅</td>
+        <td *ngIf="!coach_test.vd">❌</td>
+        <td *ngIf="coach_test.gsa">✅</td>
+        <td *ngIf="!coach_test.gsa">❌</td>
+        <td *ngIf="coach_test.serve">✅</td>
+        <td *ngIf="!coach_test.serve">❌</td>
+        <td *ngIf="coach_test.mobility">✅</td>
+        <td *ngIf="!coach_test.mobility">❌</td>
+      </tr>
     </tbody>
   </table>
-</div>
 </div>
