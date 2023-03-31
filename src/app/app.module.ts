@@ -18,6 +18,7 @@ import { IndexComponent } from './views/index/index.component';
 import { PlayerComponent } from './views/players/player/player.component';
 import { GrouptestDashboardComponent } from './views/grouptest/grouptest-dashboard/grouptest-dashboard.component';
 import { ListGrouptestComponent } from './views/grouptest/list-grouptest/list-grouptest.component';
+import { GsdVdComponent } from './views/testing/gsd-vd/gsd-vd.component';
 
 registerLocaleData(localeUk);
 
@@ -32,7 +33,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     IndexComponent,
     PlayerComponent,
     GrouptestDashboardComponent,
-    ListGrouptestComponent
+    ListGrouptestComponent,
+    GsdVdComponent
   ],
   imports: [
     BrowserModule,
