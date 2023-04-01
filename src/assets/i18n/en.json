@@ -106,8 +106,13 @@
         "points": "Points",
         "powerarea1": "Power Area - 1 Bonus point",
         "powerareadouble": "Power Area - Double Points",
-        "strike": "Strike",
+        "strike": "Stroke",
         "forehand": "Forehand",
         "backhand": "Backhand"
+    },
+    "results": {
+        "subtotal": "Sub Total",
+        "consistancy": "Consistancy",
+        "gsdtotal": "GS Depth Total"
     }
 }

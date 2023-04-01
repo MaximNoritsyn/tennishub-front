@@ -109,5 +109,10 @@
         "strike": "Удар",
         "forehand": "Форхенд",
         "backhand": "Бекхенд"
+    },
+    "results": {
+        "subtotal": "Підсумок",
+        "consistancy": "Узгодженість",
+        "gsdtotal": "Підсумок з землі"
     }
 }

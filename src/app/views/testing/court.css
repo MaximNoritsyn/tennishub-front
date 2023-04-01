@@ -6,7 +6,7 @@
     transform: perspective(500px) rotateX(30deg);
     transform-origin: bottom;
     padding: 20px;
-    margin-top: -130px;
+    margin-top: -430px;
   }
   
   .tennis-court > * {
@@ -125,6 +125,7 @@
     border-radius: 10px;
     margin: 20px;
     box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.2);
+    height: 450px;
   }
   
   .result-area-input > div {

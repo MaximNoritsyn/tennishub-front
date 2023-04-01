@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { TimeoutConfig } from 'rxjs';
 
 import { ApiService } from '../../../services/api.service';
 import { AuthService } from '../../../services/auth.service';
@@ -13,18 +12,19 @@ import { AuthService } from '../../../services/auth.service';
 })
 export class GsdVdComponent implements OnInit {
 
+  idgruptest: string = '';
   stage_number: number = 0;
-  gsd = false;
-  vd = false;
   guid: string = '';
-  private timeoutId!: ReturnType<typeof setTimeout>;
-  test_event: any = {};
+  testEvent: any = {};
   playername: string = '';
+  
+  private timeoutId!: ReturnType<typeof setTimeout>;
 
   first_bounce: string = '';
   second_bounce: string = '';
 
   isForeHand: boolean = true;
+  gsd = false;
 
   constructor(
     private _api: ApiService,
@@ -36,28 +36,39 @@ export class GsdVdComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._activeRoute.snapshot.url[1].path === 'gsd' ? this.gsd = true : this.vd = true;
+    this.gsd = this._activeRoute.snapshot.url[1].path === 'gsd'
 
     this._activeRoute.params.subscribe((params: Params) => {
       this.guid = params['idtest'];
       this.stage_number = params['stagenumber'];
-      this._api.getTypeRequestParams('api/testevent/', { 'id_db': this.guid }).subscribe((data: any) => {
-        this.test_event = data;
-        this.playername = this.test_event['person']['first_name'] + ' ' + this.test_event['person']['last_name'];
-      });
+      this.idgruptest = params['idgruptest'];
+      console.log(this.stage_number)
+      this.updateTestEvent();
+      this.updateBounces();
       this.ForBackhand();
-      var _params = {
-        'guid': this.guid,
-        'stage_number': this.stage_number,
-        'task': this._activeRoute.snapshot.url[1].path
-      };
-      this._api.getTypeRequestParams('api/detailsserving', _params).subscribe((data: any) => {
-        this.first_bounce = data['first_bounce'];
-        this.second_bounce = data['second_bounce'];
-      });
     });
 
   }
+
+  updateTestEvent() {
+    this._api.getTypeRequestParams('api/testevent/', { 'id_db': this.guid }).subscribe((data: any) => {
+      this.testEvent = data;
+      this.playername = this.testEvent['person']['first_name'] + ' ' + this.testEvent['person']['last_name'];
+    });
+  }
+
+  updateBounces() {
+    var _params = {
+      'guid': this.guid,
+      'stage_number': this.stage_number,
+      'task': this._activeRoute.snapshot.url[1].path
+    };
+    this._api.getTypeRequestParams('api/detailsserving', _params).subscribe((data: any) => {
+      this.first_bounce = data['first_bounce'];
+      this.second_bounce = data['second_bounce'];
+    });
+  }
+
 
   onClickArea(area: string) {
     if (this.first_bounce === ''
@@ -75,7 +86,6 @@ export class GsdVdComponent implements OnInit {
       this.second_bounce = '';
       this.cancelTimeout();
     }
-    console.log(this.first_bounce, this.second_bounce);
   }
 
   startTimeout() {
@@ -106,18 +116,34 @@ export class GsdVdComponent implements OnInit {
   }
 
   changeStage() {
-    this.first_bounce = '';
+    this.first_bounce = ''; 
     this.second_bounce = '';
     this.stage_number++;
-    this._router.navigate([], {
+    this._router.navigate(['../', this.stage_number], {
       relativeTo: this._activeRoute,
-      queryParams: { stagenumber: this.stage_number },
       queryParamsHandling: 'merge'
     });
-    if (this.stage_number === 10) {
-      this._router.navigate(['/grouptestdashboard/gsd-vd']);
-    }
+    this.updateTestEvent();
+    this.updateBounces();
     this.ForBackhand();
+  }
+
+  finishTask() {
+    if (this.gsd) {
+      if (this.idgruptest !== '') {
+        this._router.navigate(['/grouptestdashboard/',this.idgruptest, 'gsd']);
+      } else {
+        this._router.navigate(['testing/vd', this.guid, '1']);
+      }
+    } else {
+      if (this.idgruptest !== '') {
+        this._router.navigate(['/grouptestdashboard/',this.idgruptest, 'vd']);
+      } else {
+        this._router.navigate(['testing/gsa', this.guid, '1']);
+      }
+    }
+    
+
   }
 
   ForBackhand(): void {

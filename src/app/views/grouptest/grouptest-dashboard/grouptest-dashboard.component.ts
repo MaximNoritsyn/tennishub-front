@@ -118,10 +118,10 @@ export class GrouptestDashboardComponent implements OnInit {
 
   onClickBeginTest(idTest: string) {
     if (this.task === 'gsd') {
-      this._router.navigate(['/testing/gsd', idTest, 1]);
+      this._router.navigate(['/testing/gsd', this.group_test.id_db, idTest, 1]);
     }
     else if (this.task === 'vd') {
-      this._router.navigate(['/testing/vd', idTest, 1]);
+      this._router.navigate(['/testing/vd', this.group_test.id_db, idTest, 1]);
     }
   }
 
