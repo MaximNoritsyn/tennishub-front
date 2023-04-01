@@ -1,9 +1,12 @@
 <h3 *ngIf="gsd">{{ 'itn.tasks.gsd' | translate }} ({{playername}})
-
 </h3>
 <h3 *ngIf="vd">{{ 'itn.tasks.vd' | translate }} ({{playername}})
 </h3>
-<h5 class="cort-bounce"> Удар № {{stage_number}} ({{ forbackhand }})</h5>
+<h5 class="cort-bounce"> 
+  <a>{{'court.strike' | translate}} № {{stage_number}}</a> 
+  <a *ngIf="isForeHand"> ({{'court.forehand' | translate}})</a>
+  <a *ngIf="!isForeHand"> ({{'court.backhand' | translate}})</a>
+</h5>
 <div class="main-result-area">
   <div class="result-area-input">
     <div class="tennis-court">
@@ -24,12 +27,12 @@
       <div class="area-left-service-bottom point1 active-area" id="area_left_service"
         (click)="onClickArea('area_left_service')"
         [ngClass]="{ 'first_bounce': first_bounce==='area_left_service', 'second_bounce': second_bounce==='area_left_service' }">
-        1 бал</div>
+        1 {{'court.point' | translate}}</div>
 
       <div class="area-right-service-bottom point1 active-area" id="area_right_service"
         (click)="onClickArea('area_right_service')"
         [ngClass]="{ 'first_bounce': first_bounce==='area_right_service', 'second_bounce': second_bounce==='area_right_service' }">
-        1 бал</div>
+        1 {{'court.point' | translate}}</div>
 
       <div class="area-right-alley-bottom active-area" id="area_right_alley" (click)="onClickArea('area_right_alley')"
         [ngClass]="{ 'first_bounce': first_bounce==='area_right_alley', 'second_bounce': second_bounce==='area_right_alley' }">
@@ -38,26 +41,26 @@
       <div class="area-central-bottom-1 point2 active-area" id="area_central1" (click)="onClickArea('area_central1')"
         [ngClass]="{ 'first_bounce': first_bounce==='area_central1', 'second_bounce': second_bounce==='area_central1' }">
         2
-        бали</div>
+        {{'court.points' | translate}}</div>
 
       <div class="area-central-bottom-2 point3 active-area" id="area_central2" (click)="onClickArea('area_central2')"
         [ngClass]="{ 'first_bounce': first_bounce==='area_central2', 'second_bounce': second_bounce==='area_central2' }">
         3
-        бали</div>
+        {{'court.points' | translate}}</div>
 
       <div class="area-central-bottom-3 point4 active-area" id="area_central3" (click)="onClickArea('area_central3')"
         [ngClass]="{ 'first_bounce': first_bounce==='area_central3', 'second_bounce': second_bounce==='area_central3' }">
         4
-        бали</div>
+        {{'court.points' | translate}}</div>
 
       <div class="area-out-line active-area" id="area_out_line" (click)="onClickArea('area_out_line')"
         [ngClass]="{ 'first_bounce': first_bounce==='area_out_line', 'second_bounce': second_bounce==='area_out_line' }">
-        Зона сили - 1 бал
+        {{'court.powerarea1' | translate}}
       </div>
 
       <div class="area-out-powerline active-area" id="area_out_powerline" (click)="onClickArea('area_out_powerline')"
         [ngClass]="{ 'first_bounce': first_bounce==='area_out_powerline', 'second_bounce': second_bounce==='area_out_powerline' }">
-        Зона сили - подвійні бали</div>
+        {{'court.powerareadouble' | translate}}</div>
     </div>
   </div>
   <div style="margin:20px">

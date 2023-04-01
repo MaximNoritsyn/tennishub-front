@@ -100,5 +100,14 @@
     "pages": {
         "previous": "Previous",
         "next": "Next"
+    },
+    "court": {
+        "point": "Point",
+        "points": "Points",
+        "powerarea1": "Power Area - 1 Bonus point",
+        "powerareadouble": "Power Area - Double Points",
+        "strike": "Strike",
+        "forehand": "Forehand",
+        "backhand": "Backhand"
     }
 }

@@ -14,7 +14,6 @@ import { AuthService } from '../../../services/auth.service';
 export class GsdVdComponent implements OnInit {
 
   stage_number: number = 0;
-  forbackhand = false;
   gsd = false;
   vd = false;
   guid: string = '';
@@ -24,6 +23,8 @@ export class GsdVdComponent implements OnInit {
 
   first_bounce: string = '';
   second_bounce: string = '';
+
+  isForeHand: boolean = true;
 
   constructor(
     private _api: ApiService,
@@ -44,6 +45,7 @@ export class GsdVdComponent implements OnInit {
         this.test_event = data;
         this.playername = this.test_event['person']['first_name'] + ' ' + this.test_event['person']['last_name'];
       });
+      this.ForBackhand();
       var _params = {
         'guid': this.guid,
         'stage_number': this.stage_number,
@@ -114,6 +116,20 @@ export class GsdVdComponent implements OnInit {
     });
     if (this.stage_number === 10) {
       this._router.navigate(['/grouptestdashboard/gsd-vd']);
+    }
+    this.ForBackhand();
+  }
+
+  ForBackhand(): void {
+    if (this.stage_number == 10
+      || this.stage_number == 2
+      || this.stage_number == 4
+      || this.stage_number == 6
+      || this.stage_number == 8) {
+      this.isForeHand = true;
+    }
+    else {
+      this.isForeHand = false;
     }
   }
 
