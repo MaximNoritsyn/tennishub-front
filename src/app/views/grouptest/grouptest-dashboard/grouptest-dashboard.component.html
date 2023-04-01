@@ -95,7 +95,7 @@ flex-direction: column;">
         <td></td>
         <td></td>
       </tr>
-      <tr *ngFor="let coach_test of coach_tests" (click)="onClickBeginTest(coach_test.id_db)">
+      <tr *ngFor="let coach_test of coach_tests" (click)="onClickBeginTest(coach_test.test_event.id_db)">
         <td>{{coach_test.test_event.person.first_name}} {{coach_test.test_event.person.last_name}}</td>
         <td *ngIf="coach_test.gsd">✅</td>
         <td *ngIf="!coach_test.gsd">❌</td>

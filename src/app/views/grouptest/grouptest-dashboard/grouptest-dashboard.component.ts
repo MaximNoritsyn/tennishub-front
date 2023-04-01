@@ -26,7 +26,7 @@ export class GrouptestDashboardComponent implements OnInit {
     private _api: ApiService,
     public _auth: AuthService,
     public _router: Router,
-    private _avtiveRoute: ActivatedRoute
+    private _activeRoute: ActivatedRoute
   ) {
     this.groupForm = this.fb.group({
       id_db: [''],
@@ -38,7 +38,7 @@ export class GrouptestDashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._avtiveRoute.params.subscribe((params: Params) => {
+    this._activeRoute.params.subscribe((params: Params) => {
       if (params['id_db'] !== 'new') {
         this.mode = 'read';
         this._api.getTypeRequestParams('api/group_test/', { 'id_db': params['id_db'] }).subscribe((data: any) => {
@@ -116,13 +116,12 @@ export class GrouptestDashboardComponent implements OnInit {
     this.task = task;
   }
 
-  onClickBeginTest(idPlayer: string) {
-    console.log('onClickBeginTest', idPlayer);
+  onClickBeginTest(idTest: string) {
     if (this.task === 'gsd') {
-      this._router.navigate(['/testing/gsd', this.group_test.id_db, 1]);
+      this._router.navigate(['/testing/gsd', idTest, 1]);
     }
     else if (this.task === 'vd') {
-      this._router.navigate(['/testing/vd', this.group_test.id_db, 1]);
+      this._router.navigate(['/testing/vd', idTest, 1]);
     }
   }
 
