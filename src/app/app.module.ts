@@ -21,6 +21,7 @@ import { ListGrouptestComponent } from './views/grouptest/list-grouptest/list-gr
 import { GsdVdComponent } from './views/testing/gsd-vd/gsd-vd.component';
 import { ResultsGsdComponent } from './views/results/results-gsd/results-gsd.component';
 import { ResultsVdComponent } from './views/results/results-vd/results-vd.component';
+import { GsaComponent } from './views/testing/gsa/gsa.component';
 
 registerLocaleData(localeUk);
 
@@ -37,6 +38,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     GrouptestDashboardComponent,
     ListGrouptestComponent,
     GsdVdComponent,
+    GsaComponent,
     ResultsGsdComponent,
     ResultsVdComponent
   ],
