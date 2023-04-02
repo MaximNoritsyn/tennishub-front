@@ -153,8 +153,6 @@ export class GsdVdComponent implements OnInit {
         this._router.navigate(['testing/gsa', this.guid, '1']);
       }
     }
-
-
   }
 
   ForBackhand(): void {
