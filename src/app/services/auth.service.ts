@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core'; 
 import { ApiService } from './api.service';
+import { Router } from '@angular/router';
  
 @Injectable({ 
     providedIn: 'root' 
@@ -9,7 +10,8 @@ export class AuthService {
     userInfo: any;
     userLoaded: Promise<boolean>;
     
-    constructor(private _api: ApiService) { 
+    constructor(private _api: ApiService,
+                private _router: Router)  { 
         this.userLoaded = new Promise<boolean>((resolve) => {
             if (this.isLoggedIn()) {
               this.getUser().then(() => {
@@ -31,6 +33,9 @@ export class AuthService {
         } 
         catch (err: any) {
           this.clearStorage();
+          if (err.status === 401) {
+            this._router.navigate(['/login']);
+          }
           console.log(err);
         }
       }

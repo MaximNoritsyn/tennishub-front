@@ -97,16 +97,16 @@ flex-direction: column;">
       </tr>
       <tr *ngFor="let coach_test of coach_tests" (click)="onClickBeginTest(coach_test.test_event.id_db)">
         <td>{{coach_test.test_event.person.first_name}} {{coach_test.test_event.person.last_name}}</td>
-        <td *ngIf="coach_test.gsd">✅</td>
-        <td *ngIf="!coach_test.gsd">❌</td>
-        <td *ngIf="coach_test.vd">✅</td>
-        <td *ngIf="!coach_test.vd">❌</td>
-        <td *ngIf="coach_test.gsa">✅</td>
-        <td *ngIf="!coach_test.gsa">❌</td>
-        <td *ngIf="coach_test.serve">✅</td>
-        <td *ngIf="!coach_test.serve">❌</td>
-        <td *ngIf="coach_test.mobility">✅</td>
-        <td *ngIf="!coach_test.mobility">❌</td>
+        <td *ngIf="coach_test.finish_gsd">✅</td>
+        <td *ngIf="!coach_test.finish_gsd">❌</td>
+        <td *ngIf="coach_test.finish_vd">✅</td>
+        <td *ngIf="!coach_test.finish_vd">❌</td>
+        <td *ngIf="coach_test.finish_gsa">✅</td>
+        <td *ngIf="!coach_test.finish_gsa">❌</td>
+        <td *ngIf="coach_test.finish_serve">✅</td>
+        <td *ngIf="!coach_test.finish_serve">❌</td>
+        <td *ngIf="coach_test.finish_mobility">✅</td>
+        <td *ngIf="!coach_test.finish_mobility">❌</td>
       </tr>
     </tbody>
   </table>

@@ -42,7 +42,6 @@ export class GsdVdComponent implements OnInit {
       this.guid = params['idtest'];
       this.stage_number = params['stagenumber'];
       this.idgruptest = params['idgruptest'];
-      console.log(this.stage_number)
       this.updateTestEvent();
       this.updateBounces();
       this.ForBackhand();
@@ -131,13 +130,21 @@ export class GsdVdComponent implements OnInit {
   finishTask() {
     if (this.gsd) {
       if (this.idgruptest !== '') {
-        this._router.navigate(['/grouptestdashboard/',this.idgruptest, 'gsd']);
+        this._api.postTypeRequest('api/testevent/finishtask/', {"guid_test_event": this.guid, "task": "gsd"}).subscribe((data: any) => {
+          if (data['result'] === 'ok') {
+            this._router.navigate(['/grouptestdashboard/',this.idgruptest, 'gsd']);
+          }
+        });
       } else {
         this._router.navigate(['testing/vd', this.guid, '1']);
       }
     } else {
       if (this.idgruptest !== '') {
-        this._router.navigate(['/grouptestdashboard/',this.idgruptest, 'vd']);
+        this._api.postTypeRequest('api/testevent/finishtask/', {"guid_test_event": this.guid, "task": "vd"}).subscribe((data: any) => {
+          if (data['result'] === 'ok') {
+            this._router.navigate(['/grouptestdashboard/',this.idgruptest, 'vd']);
+          }
+        });
       } else {
         this._router.navigate(['testing/gsa', this.guid, '1']);
       }
