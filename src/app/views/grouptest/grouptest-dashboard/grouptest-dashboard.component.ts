@@ -57,6 +57,9 @@ export class GrouptestDashboardComponent implements OnInit {
         this.mode = 'new';
         this.prepareFillEmptyFields();
       };
+      if (params['task'] !== undefined) {
+        this.task = params['task'];
+      }
     });
   }
 

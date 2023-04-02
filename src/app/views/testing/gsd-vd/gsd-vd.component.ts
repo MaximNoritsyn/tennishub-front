@@ -17,7 +17,7 @@ export class GsdVdComponent implements OnInit {
   guid: string = '';
   testEvent: any = {};
   playername: string = '';
-  
+
   private timeoutId!: ReturnType<typeof setTimeout>;
 
   first_bounce: string = '';
@@ -25,6 +25,7 @@ export class GsdVdComponent implements OnInit {
 
   isForeHand: boolean = true;
   gsd = false;
+  laststage = false;
 
   constructor(
     private _api: ApiService,
@@ -45,6 +46,7 @@ export class GsdVdComponent implements OnInit {
       this.updateTestEvent();
       this.updateBounces();
       this.ForBackhand();
+      this.setlastStage();
     });
 
   }
@@ -99,23 +101,24 @@ export class GsdVdComponent implements OnInit {
 
   sendBounces() {
     this.cancelTimeout();
-    if (this.gsd) {
-      this._api.postTypeRequest('api/testevent/gsd/', {
-        'guid': this.guid,
-        'first_bounce': this.first_bounce,
-        'second_bounce': this.second_bounce,
-        'stage_number': this.stage_number,
-      }).subscribe((data: any) => {
-        if (data['result'] === 'ok') {
-          this.changeStage();
-        }
-      });
+    var url = 'api/testevent/gsd/'
+    if (!this.gsd) {
+      url = 'api/testevent/vd/'
     }
-
+    this._api.postTypeRequest(url, {
+      'guid': this.guid,
+      'first_bounce': this.first_bounce,
+      'second_bounce': this.second_bounce,
+      'stage_number': this.stage_number,
+    }).subscribe((data: any) => {
+      if (data['result'] === 'ok') {
+        this.changeStage();
+      }
+    });
   }
 
   changeStage() {
-    this.first_bounce = ''; 
+    this.first_bounce = '';
     this.second_bounce = '';
     this.stage_number++;
     this._router.navigate(['../', this.stage_number], {
@@ -125,14 +128,15 @@ export class GsdVdComponent implements OnInit {
     this.updateTestEvent();
     this.updateBounces();
     this.ForBackhand();
+    this.setlastStage();
   }
 
   finishTask() {
     if (this.gsd) {
       if (this.idgruptest !== '') {
-        this._api.postTypeRequest('api/testevent/finishtask/', {"guid_test_event": this.guid, "task": "gsd"}).subscribe((data: any) => {
+        this._api.postTypeRequest('api/testevent/finishtask/', { "guid_test_event": this.guid, "task": "gsd" }).subscribe((data: any) => {
           if (data['result'] === 'ok') {
-            this._router.navigate(['/grouptestdashboard/',this.idgruptest, 'gsd']);
+            this._router.navigate(['/grouptestdashboard/', this.idgruptest, 'gsd']);
           }
         });
       } else {
@@ -140,16 +144,16 @@ export class GsdVdComponent implements OnInit {
       }
     } else {
       if (this.idgruptest !== '') {
-        this._api.postTypeRequest('api/testevent/finishtask/', {"guid_test_event": this.guid, "task": "vd"}).subscribe((data: any) => {
+        this._api.postTypeRequest('api/testevent/finishtask/', { "guid_test_event": this.guid, "task": "vd" }).subscribe((data: any) => {
           if (data['result'] === 'ok') {
-            this._router.navigate(['/grouptestdashboard/',this.idgruptest, 'vd']);
+            this._router.navigate(['/grouptestdashboard/', this.idgruptest, 'vd']);
           }
         });
       } else {
         this._router.navigate(['testing/gsa', this.guid, '1']);
       }
     }
-    
+
 
   }
 
@@ -163,6 +167,25 @@ export class GsdVdComponent implements OnInit {
     }
     else {
       this.isForeHand = false;
+    }
+  }
+
+  setlastStage(): void {
+    if (this.gsd) {
+      if (this.stage_number > 10) {
+        this.laststage = true;
+      }
+      else {
+        this.laststage = false;
+      }
+    }
+    else {
+      if (this.stage_number > 8) {
+        this.laststage = true;
+      }
+      else {
+        this.laststage = false;
+      }
     }
   }
 

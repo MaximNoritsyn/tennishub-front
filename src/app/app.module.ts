@@ -20,6 +20,7 @@ import { GrouptestDashboardComponent } from './views/grouptest/grouptest-dashboa
 import { ListGrouptestComponent } from './views/grouptest/list-grouptest/list-grouptest.component';
 import { GsdVdComponent } from './views/testing/gsd-vd/gsd-vd.component';
 import { ResultsGsdComponent } from './views/results/results-gsd/results-gsd.component';
+import { ResultsVdComponent } from './views/results/results-vd/results-vd.component';
 
 registerLocaleData(localeUk);
 
@@ -36,7 +37,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     GrouptestDashboardComponent,
     ListGrouptestComponent,
     GsdVdComponent,
-    ResultsGsdComponent
+    ResultsGsdComponent,
+    ResultsVdComponent
   ],
   imports: [
     BrowserModule,

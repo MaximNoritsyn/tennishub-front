@@ -113,6 +113,7 @@
     "results": {
         "subtotal": "Sub Total",
         "consistancy": "Consistancy",
-        "gsdtotal": "GS Depth Total"
+        "gsdtotal": "GS Depth Total",
+        "vdtotal": "Volley Depth Total"
     }
 }

@@ -2,13 +2,13 @@
 </h3>
 <h3 *ngIf="!gsd">{{ 'itn.tasks.vd' | translate }} ({{playername}})
 </h3>
-<h5 class="cort-bounce" *ngIf="stage_number <= 10">
+<h5 class="cort-bounce" *ngIf="!laststage">
   <a>{{'court.strike' | translate}} № {{stage_number}}</a>
   <a *ngIf="isForeHand"> ({{'court.forehand' | translate}})</a>
   <a *ngIf="!isForeHand"> ({{'court.backhand' | translate}})</a>
 </h5>
 <div class="main-result-area">
-  <div class="result-area-input" *ngIf="stage_number <= 10">
+  <div class="result-area-input" *ngIf="!laststage">
     <div class="tennis-court">
       <div class="area-left-alley-top"></div>
       <div class="area-central-top"></div>
@@ -68,11 +68,9 @@
       <app-results-gsd [testEvent]="testEvent"></app-results-gsd>
     </ng-container>
     <ng-container *ngIf="!gsd">
-      <ng-template #vd>
-
-      </ng-template>
+      <app-results-vd [testEvent]="testEvent"></app-results-vd>
     </ng-container>
   </div>
-  
+
 </div>
-<button (click)="finishTask()"  class="main-result-area" *ngIf="stage_number == 11">Завершити</button>
+<button (click)="finishTask()" class="main-result-area" *ngIf="laststage">Завершити</button>
