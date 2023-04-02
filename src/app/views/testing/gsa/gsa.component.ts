@@ -23,6 +23,7 @@ export class GsaComponent implements OnInit {
   second_bounce: string = '';
 
   isForeHand: boolean = true;
+  dl: boolean = false;
   laststage = false;
 
   constructor(
@@ -145,6 +146,9 @@ export class GsaComponent implements OnInit {
     }
     else {
       this.isForeHand = false;
+    }
+    if (this.stage_number < 7) {
+      this.dl = true;
     }
   }
 

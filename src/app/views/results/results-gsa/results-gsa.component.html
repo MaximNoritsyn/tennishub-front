@@ -1,0 +1,88 @@
+<div class="block-res">
+  <div class="table-res-header">
+    <h3>{{'itn.tasks.gsa'| translate}}</h3>
+  </div>
+  <table class="table-res">
+    <thead>
+      <tr>
+        <th class="no-border-left">{{'court.strike'| translate}} </th>
+        <th class="no-border-right">№</th>
+        <th>{{'court.points'| translate}}</th>
+      </tr>
+    </thead>
+    <tbody>
+  <tr>
+    <td class="no-border-left yellow_back">{{'court.forehand'| translate}} {{'court.dl'| translate}}</td>
+    <td class="no-border-right yellow_back">1</td>
+    <td>{{ testEvent.value_gsa01}}</td>
+  </tr>
+  <tr>
+    <td class="no-border-left yellow_back">{{'court.backhand'| translate}} {{'court.dl'| translate}}</td>
+    <td class="no-border-right yellow_back">2</td>
+    <td>{{ testEvent.value_gsa02}}</td>
+  </tr>
+  <tr>
+    <td class="no-border-left yellow_back">{{'court.forehand'| translate}} {{'court.dl'| translate}}</td>
+    <td class="no-border-right yellow_back">3</td>
+    <td>{{ testEvent.value_gsa03}}</td>
+  </tr>
+  <tr>
+    <td class="no-border-left yellow_back">{{'court.backhand'| translate}} {{'court.dl'| translate}}</td>
+    <td class="no-border-right yellow_back">4</td>
+    <td>{{ testEvent.value_gsa04}}</td>
+  </tr>
+  <tr>
+    <td class="no-border-left yellow_back">{{'court.forehand'| translate}} {{'court.dl'| translate}}</td>
+    <td class="no-border-right yellow_back">5</td>
+    <td>{{ testEvent.value_gsa05}}</td>
+  </tr>
+  <tr>
+    <td class="no-border-left yellow_back">{{'court.backhand'| translate}} {{'court.dl'| translate}}</td>
+    <td class="no-border-right yellow_back">6</td>
+    <td>{{ testEvent.value_gsa06}}</td>
+  </tr>
+  <tr>
+    <td class="no-border-left">{{'court.forehand'| translate}} {{'court.cc'| translate}}</td>
+    <td class="no-border-right">7</td>
+    <td>{{ testEvent.value_gsa07}}</td>
+  </tr>
+  <tr>
+    <td class="no-border-left">{{'court.backhand'| translate}} {{'court.cc'| translate}}</td>
+    <td class="no-border-right">8</td>
+    <td>{{ testEvent.value_gsa08}}</td>
+  </tr>
+  <tr>
+    <td class="no-border-left">{{'court.forehand'| translate}} {{'court.cc'| translate}}</td>
+    <td class="no-border-right">9</td>
+    <td>{{ testEvent.value_gsa09}}</td>
+  </tr>
+  <tr>
+    <td class="no-border-left">{{'court.backhand'| translate}} {{'court.cc'| translate}}</td>
+    <td class="no-border-right">10</td>
+    <td>{{ testEvent.value_gsa10}}</td>
+  </tr>
+  <tr>
+    <td class="no-border-left">{{'court.forehand'| translate}} {{'court.cc'| translate}}</td>
+    <td class="no-border-right">11</td>
+    <td>{{ testEvent.value_gsa11}}</td>
+  </tr>
+  <tr>
+    <td class="no-border-left">{{'court.backhand'| translate}} {{'court.cc'| translate}}</td>
+    <td class="no-border-right">12</td>
+    <td>{{ testEvent.value_gsa12}}</td>
+  </tr>
+  <tr>
+    <td colspan="2">{{'results.subtotal'| translate}}</td>
+    <td>{{ testEvent.total_gsa}}</td>
+  </tr>
+  <tr>
+    <td colspan="2">{{'results.consistancy'| translate}}</td>
+    <td>{{ testEvent.consistency_gsa}}</td>
+  </tr>
+  <tr>
+    <td colspan="2">{{'results.gsatotal'| translate}}</td>
+    <td> {{testEvent.total_gsa + testEvent.consistency_gsa}}</td>
+  </tr>
+</tbody>
+</table>
+</div>

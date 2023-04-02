@@ -22,6 +22,7 @@ import { GsdVdComponent } from './views/testing/gsd-vd/gsd-vd.component';
 import { ResultsGsdComponent } from './views/results/results-gsd/results-gsd.component';
 import { ResultsVdComponent } from './views/results/results-vd/results-vd.component';
 import { GsaComponent } from './views/testing/gsa/gsa.component';
+import { ResultsGsaComponent } from './views/results/results-gsa/results-gsa.component';
 
 registerLocaleData(localeUk);
 
@@ -40,7 +41,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     GsdVdComponent,
     GsaComponent,
     ResultsGsdComponent,
-    ResultsVdComponent
+    ResultsVdComponent,
+    ResultsGsaComponent
   ],
   imports: [
     BrowserModule,

@@ -11,6 +11,7 @@
             "create": "Create",
             "save": "Save",
             "edit": "Edit",
+            "finish": "Finish",
             "mainWelcome": "Welcome to the site. Register to start using or log in to your account",
             "players": "Players",
             "allTests": "All completed tests",
@@ -108,12 +109,15 @@
         "powerareadouble": "Power Area - Double Points",
         "strike": "Stroke",
         "forehand": "Forehand",
-        "backhand": "Backhand"
+        "backhand": "Backhand",
+        "cc": "CC",
+        "dl": "DL"
     },
     "results": {
         "subtotal": "Sub Total",
         "consistancy": "Consistancy",
         "gsdtotal": "GS Depth Total",
-        "vdtotal": "Volley Depth Total"
+        "vdtotal": "Volley Depth Total",
+        "gsatotal": "GS Accuracy Total"
     }
 }

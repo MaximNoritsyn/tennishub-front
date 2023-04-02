@@ -1,11 +1,13 @@
 <h3>{{ 'itn.tasks.gsa' | translate }} ({{ playername }})</h3>
-<h5 class="cort-bounce" *ngIf="laststage">
+<h5 class="cort-bounce" *ngIf="!laststage">
   <a>{{'court.strike' | translate}} № {{stage_number}}</a>
   <a *ngIf="isForeHand"> ({{'court.forehand' | translate}})</a>
   <a *ngIf="!isForeHand"> ({{'court.backhand' | translate}})</a>
+  <a *ngIf="dl"> ({{'court.dl' | translate}})</a>
+  <a *ngIf="!dl"> ({{'court.cc' | translate}})</a>
 </h5>
-<div class="main-result-area" *ngIf="!laststage">
-  <div class="result-area-input">
+<div class="main-result-area">
+  <div class="result-area-input" *ngIf="!laststage">
     <div class="tennis-court">
       <div class="area-left-alley-top"></div>
       <div class="area-central-top"></div>
@@ -68,10 +70,16 @@
         {{'court.powerareadouble' | translate}}</div>
     </div>
   </div>
+
+  <div style="margin:20px">
+    <ng-container>
+      <app-results-gsa [testEvent]="testEvent"></app-results-gsa>
+    </ng-container>
+  </div>
+
 </div>
 <div *ngIf="laststage">
   <div class="text-center mb-3">
-    <h5>{{'itn.tasks.thanks' | translate}}</h5>
-    <button class="btn btn-primary" (click)="finishTask()">{{'itn.tasks.restart' | translate}}</button>
+    <button class="main-result-area" (click)="finishTask()">{{'base.common.finish' | translate}}</button>
   </div>
 </div>
