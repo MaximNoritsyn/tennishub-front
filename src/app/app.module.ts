@@ -23,6 +23,7 @@ import { ResultsGsdComponent } from './views/results/results-gsd/results-gsd.com
 import { ResultsVdComponent } from './views/results/results-vd/results-vd.component';
 import { GsaComponent } from './views/testing/gsa/gsa.component';
 import { ResultsGsaComponent } from './views/results/results-gsa/results-gsa.component';
+import { ServeComponent } from './views/testing/serve/serve.component';
 
 registerLocaleData(localeUk);
 
@@ -40,6 +41,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ListGrouptestComponent,
     GsdVdComponent,
     GsaComponent,
+    ServeComponent,
     ResultsGsdComponent,
     ResultsVdComponent,
     ResultsGsaComponent

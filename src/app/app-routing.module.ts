@@ -9,6 +9,7 @@ import { IsLoggedGuard } from './services/auth-guard.service';
 import { ListGrouptestComponent } from './views/grouptest/list-grouptest/list-grouptest.component';
 import { GsdVdComponent } from './views/testing/gsd-vd/gsd-vd.component';
 import { GsaComponent } from './views/testing/gsa/gsa.component';
+import { ServeComponent } from './views/testing/serve/serve.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -23,6 +24,8 @@ const routes: Routes = [
   {path: 'testing/vd/:idgruptest/:idtest/:stagenumber', canActivate: [IsLoggedGuard], component: GsdVdComponent},
   {path: 'testing/gsa/:idtest/:stagenumber', canActivate: [IsLoggedGuard], component: GsaComponent},
   {path: 'testing/gsa/:idgruptest/:idtest/:stagenumber', canActivate: [IsLoggedGuard], component: GsaComponent},
+  {path: 'testing/serve/:idtest/:stagenumber', canActivate: [IsLoggedGuard], component: ServeComponent},
+  {path: 'testing/serve/:idgruptest/:idtest/:stagenumber', canActivate: [IsLoggedGuard], component: ServeComponent},
 ];
 
 @NgModule({
