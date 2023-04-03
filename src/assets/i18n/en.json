@@ -111,13 +111,18 @@
         "forehand": "Forehand",
         "backhand": "Backhand",
         "cc": "CC",
-        "dl": "DL"
+        "dl": "DL",
+        "boxwide1": "1st Box Wide",
+        "boxwide2": "2nd Box Wide",
+        "boxmiddle1": "1st Box Middle",
+        "boxmiddle2": "2nd Box Middle"
     },
     "results": {
         "subtotal": "Sub Total",
         "consistancy": "Consistancy",
         "gsdtotal": "GS Depth Total",
         "vdtotal": "Volley Depth Total",
-        "gsatotal": "GS Accuracy Total"
+        "gsatotal": "GS Accuracy Total",
+        "servetotal": "Serve Total"
     }
 }

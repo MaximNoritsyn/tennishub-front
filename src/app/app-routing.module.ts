@@ -24,8 +24,8 @@ const routes: Routes = [
   {path: 'testing/vd/:idgruptest/:idtest/:stagenumber', canActivate: [IsLoggedGuard], component: GsdVdComponent},
   {path: 'testing/gsa/:idtest/:stagenumber', canActivate: [IsLoggedGuard], component: GsaComponent},
   {path: 'testing/gsa/:idgruptest/:idtest/:stagenumber', canActivate: [IsLoggedGuard], component: GsaComponent},
-  {path: 'testing/serve/:idtest/:stagenumber', canActivate: [IsLoggedGuard], component: ServeComponent},
-  {path: 'testing/serve/:idgruptest/:idtest/:stagenumber', canActivate: [IsLoggedGuard], component: ServeComponent},
+  {path: 'testing/serve/:idtest/:stagenumber/:serve', canActivate: [IsLoggedGuard], component: ServeComponent},
+  {path: 'testing/serve/:idgruptest/:idtest/:stagenumber/:serve', canActivate: [IsLoggedGuard], component: ServeComponent},
 ];
 
 @NgModule({

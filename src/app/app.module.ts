@@ -24,6 +24,7 @@ import { ResultsVdComponent } from './views/results/results-vd/results-vd.compon
 import { GsaComponent } from './views/testing/gsa/gsa.component';
 import { ResultsGsaComponent } from './views/results/results-gsa/results-gsa.component';
 import { ServeComponent } from './views/testing/serve/serve.component';
+import { ResultsServeComponent } from './views/results/results-serve/results-serve.component';
 
 registerLocaleData(localeUk);
 
@@ -44,7 +45,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ServeComponent,
     ResultsGsdComponent,
     ResultsVdComponent,
-    ResultsGsaComponent
+    ResultsGsaComponent,
+    ResultsServeComponent
   ],
   imports: [
     BrowserModule,
