@@ -25,6 +25,7 @@ import { GsaComponent } from './views/testing/gsa/gsa.component';
 import { ResultsGsaComponent } from './views/results/results-gsa/results-gsa.component';
 import { ServeComponent } from './views/testing/serve/serve.component';
 import { ResultsServeComponent } from './views/results/results-serve/results-serve.component';
+import { MobilityComponent } from './views/testing/mobility/mobility.component';
 
 registerLocaleData(localeUk);
 
@@ -43,6 +44,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     GsdVdComponent,
     GsaComponent,
     ServeComponent,
+    MobilityComponent,
     ResultsGsdComponent,
     ResultsVdComponent,
     ResultsGsaComponent,

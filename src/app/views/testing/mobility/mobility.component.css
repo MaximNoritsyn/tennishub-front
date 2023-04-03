@@ -1,0 +1,30 @@
+.table_mobility {
+    display: flex;
+    flex-wrap: wrap;
+    border-spacing: 0px;
+  }
+  
+  .table_mobility_row1 {
+    border: 1px solid black;
+    width: 20px;
+    padding: 4px;
+  }
+  
+  .table_mobility_row2 {
+    border: 1px solid black;
+    background-color: var(--clr30light);
+    color: var(--fclr30);
+    padding: 4px;
+    text-align: center;
+  }
+  
+  .table_mobility_column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+  }
+  
+  .table_mobility_column table{
+      border-spacing: 0px;
+  }
