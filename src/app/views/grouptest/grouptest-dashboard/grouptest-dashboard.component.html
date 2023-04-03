@@ -12,7 +12,7 @@ flex-direction: column;">
     (ngSubmit)='saveGroupTest()'>
 
     <div>
-      <label for="assessor">{{'grouptest.assessor' | translate}}</label>
+      <label for="assessor">{{'itn.assessor' | translate}}</label>
       <input type="text" id="assessor" [readonly]="mode == 'read'" name="assessor" formControlName="assessor">
     </div>
     <div *ngIf="groupForm.get('assessor')?.errors && groupForm.get('assessor')?.touched">
@@ -20,7 +20,7 @@ flex-direction: column;">
     </div>
 
     <div>
-      <label for="date">{{'grouptest.date' | translate}}</label>
+      <label for="date">{{'itn.date' | translate}}</label>
       <input type="date" id="date" [readonly]="mode == 'read'" name="date" formControlName="date">
     </div>
     <div *ngIf="groupForm.get('date')?.errors && groupForm.get('date')?.touched">
@@ -28,7 +28,7 @@ flex-direction: column;">
     </div>
 
     <div>
-      <label for="venue">{{'grouptest.venue' | translate}}</label>
+      <label for="venue">{{'itn.venue' | translate}}</label>
       <input type="text" id="venue" [readonly]="mode == 'read'" name="venue" formControlName="venue">
     </div>
     <div *ngIf="groupForm.get('venue')?.errors && groupForm.get('venue')?.touched">

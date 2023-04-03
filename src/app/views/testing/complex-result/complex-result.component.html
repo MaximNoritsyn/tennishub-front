@@ -1,3 +1,579 @@
-<p>
-  complex-result works!
-</p>
+<div class="page-res">
+  <div>
+    <h2>{{'results.title' | translate}}</h2>
+  </div>
+  <div class="full-table-result">
+    <div class="row-result">
+      <div class="column-result" style="border: 2px solid black; padding: 5px">
+        <div>
+          <label for="name">{{'results.name' | translate}}:</label>
+          <input id="name" type="text" readonly value="{{testEvent.person.first_name}} {{testEvent.person.last_name}}">
+          <label for="birthday">{{'person.birthday' | translate}}:</label>
+          <input type="date" id="birthday" readonly name="birthday" value="{{ testEvent.person.birthday }}">
+          <label for="sex">{{'person.sex' | translate}}:</label>
+          <input *ngIf="testEvent.person.sex == 'F'" type="text" id="sex" name="sex" readonly value="{{'person.sexes.female'| translate}}">
+          <input *ngIf="testEvent.person.sex == 'M'" type="text" id="sex" name="sex" readonly value="{{'person.sexes.male'| translate}}">
+        </div>
+        <div>
+          <label for="assessor">{{'itn.assessor' | translate}}:</label>
+          <input id="assessor" type="text" readonly value="{{testEvent.assessor}}">
+          <label for="date">{{'itn.date' | translate}}:</label>
+          <input type="date" id="date" readonly name="date" value="{{ testEvent.date }}">
+          <label for="vanue">{{'itn.venue' | translate}}:</label>
+          <input id="vanue" type="text" readonly value="{{testEvent.venue}}">
+        </div>
+      </div>
+    </div>
+    <div class="row-result">
+      <div class="column-result">
+        <ng-container>
+          <app-results-gsd [testEvent]="testEvent"></app-results-gsd>
+        </ng-container>
+      </div>
+      <div class="column-result">
+        <ng-container>
+          <app-results-vd [testEvent]="testEvent"></app-results-vd>
+        </ng-container>
+      </div>
+      <div class="column-result">
+        <ng-container>
+          <app-results-gsa [testEvent]="testEvent"></app-results-gsa>
+        </ng-container>
+      </div>
+      <div class="column-result">
+        <ng-container>
+          <app-results-serve [testEvent]="testEvent"></app-results-serve>
+        </ng-container>
+      </div>
+    </div>
+    <div class="row-result">
+      <div class="column-result" style="display: inline-flex;">
+        <h3 style="align-self: end; margin: auto;">{{'results.mobilitytable' | translate}}</h3>
+        <table style="height: 10px; align-self: end;">
+          <tbody>
+            <tr>
+              <td class="table_mobility_row1" style="width: 110px;">{{'results.timetitle' | translate}}</td>
+              <td class="table_mobility_row2" style="width: 110px;">{{'results.pointstitle' | translate}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row-result">
+      <div class="column-result">
+        <div class="table_mobility">
+          <div id="Time" class="table_mobility_column">
+              <table>
+                  <thead>
+                  <tr><th class="table_mobility_row1">{{ 'results.secundsshort' | translate }}</th></tr>
+                  </thead>
+                  <tbody>
+                  <tr><td class="table_mobility_row2">{{ 'results.pointsshort' | translate }}</td></tr>
+                  </tbody>
+              </table>
+          </div>
+          <div id="40" class="table_mobility_column"
+          [ngClass]="{ 'marked-res': mobilityArea==='40'}">
+              <table>
+                  <thead>
+                  <tr><th class="table_mobility_row1">40</th></tr>
+                  </thead>
+                  <tbody>
+                  <tr><td class="table_mobility_row2">1</td></tr>
+                  </tbody>
+              </table>
+          </div>
+          <div id="39" class="table_mobility_column"
+          [ngClass]="{ 'marked-res': mobilityArea==='39'}">
+              <table>
+                  <thead>
+                  <tr><th class="table_mobility_row1">39</th></tr>
+                  </thead>
+                  <tbody>
+                  <tr><td class="table_mobility_row2">2</td></tr>
+                  </tbody>
+              </table>
+          </div>
+          <div id="38" class="table_mobility_column"
+          [ngClass]="{ 'marked-res': mobilityArea==='38'}">
+              <table>
+                  <thead>
+                  <tr><th class="table_mobility_row1">38</th></tr>
+                  </thead>
+                  <tbody>
+                  <tr><td class="table_mobility_row2">3</td></tr>
+                  </tbody>
+              </table>
+          </div>
+          <div id="37" class="table_mobility_column"
+          [ngClass]="{ 'marked-res': mobilityArea==='37'}">
+              <table>
+                  <thead>
+                  <tr><th class="table_mobility_row1">37</th></tr>
+                  </thead>
+                  <tbody>
+                  <tr><td class="table_mobility_row2">4</td></tr>
+                  </tbody>
+              </table>
+          </div>
+          <div id="36" class="table_mobility_column"
+          [ngClass]="{ 'marked-res': mobilityArea==='36'}">
+              <table>
+                  <thead>
+                  <tr><th class="table_mobility_row1">36</th></tr>
+                  </thead>
+                  <tbody>
+                  <tr><td class="table_mobility_row2">5</td></tr>
+                  </tbody>
+              </table>
+          </div>
+          <div id="35" class="table_mobility_column"
+          [ngClass]="{ 'marked-res': mobilityArea==='35'}">
+              <table>
+                  <thead>
+                  <tr><th class="table_mobility_row1">35</th></tr>
+                  </thead>
+                  <tbody>
+                  <tr><td class="table_mobility_row2">6</td></tr>
+                  </tbody>
+              </table>
+          </div>
+          <div id="34" class="table_mobility_column"
+          [ngClass]="{ 'marked-res': mobilityArea==='34'}">
+              <table>
+                  <thead>
+                  <tr><th class="table_mobility_row1">34</th></tr>
+                  </thead>
+                  <tbody>
+                  <tr><td class="table_mobility_row2">7</td></tr>
+                  </tbody>
+              </table>
+          </div>
+          <div id="33" class="table_mobility_column"
+          [ngClass]="{ 'marked-res': mobilityArea==='33'}">
+              <table>
+                  <thead>
+                  <tr><th class="table_mobility_row1">33</th></tr>
+                  </thead>
+                  <tbody>
+                  <tr><td class="table_mobility_row2">8</td></tr>
+                  </tbody>
+              </table>
+          </div>
+          <div id="32" class="table_mobility_column"
+          [ngClass]="{ 'marked-res': mobilityArea==='32'}">
+              <table>
+                  <thead>
+                  <tr><th class="table_mobility_row1">32</th></tr>
+                  </thead>
+                  <tbody>
+                  <tr><td class="table_mobility_row2">9</td></tr>
+                  </tbody>
+              </table>
+          </div>
+          <div id="31" class="table_mobility_column"
+          [ngClass]="{ 'marked-res': mobilityArea==='31'}">
+              <table>
+                  <thead>
+                  <tr><th class="table_mobility_row1">31</th></tr>
+                  </thead>
+                  <tbody>
+                  <tr><td class="table_mobility_row2">10</td></tr>
+                  </tbody>
+              </table>
+          </div>
+          <div id="30" class="table_mobility_column"
+          [ngClass]="{ 'marked-res': mobilityArea==='30'}">
+              <table>
+                  <thead>
+                  <tr><th class="table_mobility_row1">30</th></tr>
+                  </thead>
+                  <tbody>
+                  <tr><td class="table_mobility_row2">11</td></tr>
+                  </tbody>
+              </table>
+          </div>
+          <div id="29" class="table_mobility_column"
+          [ngClass]="{ 'marked-res': mobilityArea==='29'}">
+              <table>
+                  <thead>
+                  <tr><th class="table_mobility_row1">29</th></tr>
+                  </thead>
+                  <tbody>
+                  <tr><td class="table_mobility_row2">12</td></tr>
+                  </tbody>
+              </table>
+          </div>
+          <div id="28" class="table_mobility_column"
+          [ngClass]="{ 'marked-res': mobilityArea==='28'}">
+              <table>
+                  <thead>
+                  <tr><th class="table_mobility_row1">28</th></tr>
+                  </thead>
+                  <tbody>
+                  <tr><td class="table_mobility_row2">12</td></tr>
+                  </tbody>
+              </table>
+          </div>
+          <div id="27" class="table_mobility_column"
+          [ngClass]="{ 'marked-res': mobilityArea==='27'}">
+              <table>
+                  <thead>
+                  <tr><th class="table_mobility_row1">27</th></tr>
+                  </thead>
+                  <tbody>
+                  <tr><td class="table_mobility_row2">14</td></tr>
+                  </tbody>
+              </table>
+          </div>
+          <div id="26" class="table_mobility_column"
+          [ngClass]="{ 'marked-res': mobilityArea==='26'}">
+              <table>
+                  <thead>
+                  <tr><th class="table_mobility_row1">26</th></tr>
+                  </thead>
+                  <tbody>
+                  <tr><td class="table_mobility_row2">15</td></tr>
+                  </tbody>
+              </table>
+          </div>
+          <div id="25" class="table_mobility_column"
+          [ngClass]="{ 'marked-res': mobilityArea==='25'}">
+              <table>
+                  <thead>
+                  <tr><th class="table_mobility_row1">25</th></tr>
+                  </thead>
+                  <tbody>
+                  <tr><td class="table_mobility_row2">16</td></tr>
+                  </tbody>
+              </table>
+          </div>
+          <div id="24" class="table_mobility_column"
+          [ngClass]="{ 'marked-res': mobilityArea==='24'}">
+              <table>
+                  <thead>
+                  <tr><th class="table_mobility_row1">24</th></tr>
+                  </thead>
+                  <tbody>
+                  <tr><td class="table_mobility_row2">18</td></tr>
+                  </tbody>
+              </table>
+          </div>
+          <div id="23" class="table_mobility_column"
+          [ngClass]="{ 'marked-res': mobilityArea==='23'}">
+              <table>
+                  <thead>
+                  <tr><th class="table_mobility_row1">23</th></tr>
+                  </thead>
+                  <tbody>
+                  <tr><td class="table_mobility_row2">19</td></tr>
+                  </tbody>
+              </table>
+          </div>
+          <div id="22" class="table_mobility_column"
+          [ngClass]="{ 'marked-res': mobilityArea==='22'}">
+              <table>
+                  <thead>
+                  <tr><th class="table_mobility_row1">22</th></tr>
+                  </thead>
+                  <tbody>
+                  <tr><td class="table_mobility_row2">21</td></tr>
+                  </tbody>
+              </table>
+          </div>
+          <div id="21" class="table_mobility_column"
+          [ngClass]="{ 'marked-res': mobilityArea==='21'}">
+              <table>
+                  <thead>
+                  <tr><th class="table_mobility_row1">21</th></tr>
+                  </thead>
+                  <tbody>
+                  <tr><td class="table_mobility_row2">26</td></tr>
+                  </tbody>
+              </table>
+          </div>
+          <div id="20" class="table_mobility_column"
+          [ngClass]="{ 'marked-res': mobilityArea==='20'}">
+              <table>
+                  <thead>
+                  <tr><th class="table_mobility_row1">20</th></tr>
+                  </thead>
+                  <tbody>
+                  <tr><td class="table_mobility_row2">32</td></tr>
+                  </tbody>
+              </table>
+          </div>
+          <div id="19" class="table_mobility_column"
+          [ngClass]="{ 'marked-res': mobilityArea==='19'}">
+              <table>
+                  <thead>
+                  <tr><th class="table_mobility_row1">19</th></tr>
+                  </thead>
+                  <tbody>
+                  <tr><td class="table_mobility_row2">39</td></tr>
+                  </tbody>
+              </table>
+          </div>
+          <div id="18" class="table_mobility_column"
+          [ngClass]="{ 'marked-res': mobilityArea==='18'}">
+              <table>
+                  <thead>
+                  <tr><th class="table_mobility_row1">18</th></tr>
+                  </thead>
+                  <tbody>
+                  <tr><td class="table_mobility_row2">45</td></tr>
+                  </tbody>
+              </table>
+          </div>
+          <div id="17" class="table_mobility_column"
+          [ngClass]="{ 'marked-res': mobilityArea==='17'}">
+              <table>
+                  <thead>
+                  <tr><th class="table_mobility_row1">17</th></tr>
+                  </thead>
+                  <tbody>
+                  <tr><td class="table_mobility_row2">52</td></tr>
+                  </tbody>
+              </table>
+          </div>
+          <div id="16" class="table_mobility_column"
+          [ngClass]="{ 'marked-res': mobilityArea==='16'}">
+              <table>
+                  <thead>
+                  <tr><th class="table_mobility_row1">16</th></tr>
+                  </thead>
+                  <tbody>
+                  <tr><td class="table_mobility_row2">61</td></tr>
+                  </tbody>
+              </table>
+          </div>
+          <div id="15" class="table_mobility_column"
+          [ngClass]="{ 'marked-res': mobilityArea==='15'}">
+              <table>
+                  <thead>
+                  <tr><th class="table_mobility_row1">15</th></tr>
+                  </thead>
+                  <tbody>
+                  <tr><td class="table_mobility_row2">76</td></tr>
+                  </tbody>
+              </table>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+    <div class="row-result">
+      <div class="table_mobility column-result" style="margin: 0px">
+        <div class="itn-block">
+          <table>
+            <tbody>
+              <tr>
+                <th class="itn-res blue-back">{{ 'results.scoref' | translate }}</th>
+              </tr>
+              <tr>
+                <td class="itn-res brown-back">{{ 'results.scorem' | translate }}</td>
+              </tr>
+              <tr>
+                <td class="itn-res brown-back">{{ 'results.inttitle' | translate }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="itn-block" id="itn_10" [ngClass]="{ 'marked-res': itnArea==10}">
+          <table>
+            <tbody>
+              <tr>
+                <th class="itn-res">57-79</th>
+              </tr>
+              <tr>
+                <td class="itn-res">75-104</td>
+              </tr>
+              <tr>
+                <td class="itn-res brown-back">{{ 'results.inttitle' | translate }} 10</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="itn-block" id="itn_9" [ngClass]="{ 'marked-res': itnArea==9}">
+          <table>
+            <tbody>
+              <tr>
+                <th class="itn-res">80-108</th>
+              </tr>
+              <tr>
+                <td class="itn-res">105-139</td>
+              </tr>
+              <tr>
+                <td class="itn-res brown-back">{{ 'results.inttitle' | translate }} 9</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="itn-block" id="itn_8" [ngClass]="{ 'marked-res': itnArea==8}">
+          <table>
+            <tbody>
+              <tr>
+                <th class="itn-res">109-140</th>
+              </tr>
+              <tr>
+                <td class="itn-res">140-175</td>
+              </tr>
+              <tr>
+                <td class="itn-res brown-back">{{ 'results.inttitle' | translate }} 8</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="itn-block" id="itn_7" [ngClass]="{ 'marked-res': itnArea==7}">
+          <table>
+            <tbody>
+              <tr>
+                <th class="itn-res">141-171</th>
+              </tr>
+              <tr>
+                <td class="itn-res">176-209</td>
+              </tr>
+              <tr>
+                <td class="itn-res brown-back">{{ 'results.inttitle' | translate }} 7</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="itn-block" id="itn_6" [ngClass]="{ 'marked-res': itnArea==6}">
+          <table>
+            <tbody>
+              <tr>
+                <th class="itn-res">172-205</th>
+              </tr>
+              <tr>
+                <td class="itn-res">210-244</td>
+              </tr>
+              <tr>
+                <td class="itn-res brown-back">{{ 'results.inttitle' | translate }} 6</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="itn-block" id="itn_5" [ngClass]="{ 'marked-res': itnArea==5}">
+          <table>
+            <tbody>
+              <tr>
+                <th class="itn-res">206-230</th>
+              </tr>
+              <tr>
+                <td class="itn-res">245-268</td>
+              </tr>
+              <tr>
+                <td class="itn-res brown-back">{{ 'results.inttitle' | translate }} 5</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="itn-block" id="itn_4" [ngClass]="{ 'marked-res': itnArea==4}">
+          <table>
+            <tbody>
+              <tr>
+                <th class="itn-res">231-258</th>
+              </tr>
+              <tr>
+                <td class="itn-res">269-293</td>
+              </tr>
+              <tr>
+                <td class="itn-res brown-back">{{ 'results.inttitle' | translate }} 4</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="itn-block" id="itn_3" [ngClass]="{ 'marked-res': itnArea==3}">
+          <table>
+            <tbody>
+              <tr>
+                <th class="itn-res">259-303</th>
+              </tr>
+              <tr>
+                <td class="itn-res">294-337</td>
+              </tr>
+              <tr>
+                <td class="itn-res brown-back">{{ 'results.inttitle' | translate }} 3</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="itn-block" id="itn_2" [ngClass]="{ 'marked-res': itnArea==2}">
+          <table>
+            <tbody>
+              <tr>
+                <th class="itn-res">304-344</th>
+              </tr>
+              <tr>
+                <td class="itn-res">338-362</td>
+              </tr>
+              <tr>
+                <td class="itn-res brown-back">{{ 'results.inttitle' | translate }} 2</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="itn-block" id="itn_1" [ngClass]="{ 'marked-res': itnArea==1}">
+          <table>
+            <tbody>
+              <tr>
+                <th class="itn-res">345-430</th>
+              </tr>
+              <tr>
+                <td class="itn-res">363-430</td>
+              </tr>
+              <tr>
+                <td class="itn-res brown-back">{{ 'results.inttitle' | translate }} 1</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="row-result">
+      <div class="table_mobility column-result">
+        <table class="itn-block" style="border-spacing: 0px;margin-right: 20px;">
+          <thead>
+            <tr>
+              <th class="itn-res blue-back" style="width: 100px;">{{ 'results.strokestotal' | translate }}</th>
+              <th class="itn-res blue-back" style="width: 100px;">{{ 'results.mobilityscore' | translate }}</th>
+              <th class="itn-res blue-back" style="width: 100px;">{{ 'results.totalscore' | translate }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="itn-res"> {{testEvent.strokes_total}}
+              </td>
+              <td class="itn-res">
+                {{testEvent.value_mobility}}
+              </td>
+              <td class="itn-res">
+                {{testEvent.total_score}}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <table style="border-spacing: 0px">
+          <thead>
+            <tr>
+              <th class="itn-res blue-back" style="width: 100px;">{{ 'results.numberofassessments' | translate }}</th>
+              <th class="itn-res blue-back" style="width: 100px;">{{ 'results.newitnrating' | translate }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="itn-res">
+                {{testEvent.total_score}}
+              </td>
+              <td class="itn-res">
+                {{testEvent.itn}}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
