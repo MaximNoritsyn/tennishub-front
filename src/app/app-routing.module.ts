@@ -11,6 +11,7 @@ import { GsdVdComponent } from './views/testing/gsd-vd/gsd-vd.component';
 import { GsaComponent } from './views/testing/gsa/gsa.component';
 import { ServeComponent } from './views/testing/serve/serve.component';
 import { MobilityComponent } from './views/testing/mobility/mobility.component';
+import { ComplexResultComponent } from './views/testing/complex-result/complex-result.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -29,6 +30,8 @@ const routes: Routes = [
   {path: 'testing/serve/:idgruptest/:idtest/:stagenumber/:serve', canActivate: [IsLoggedGuard], component: ServeComponent},
   {path: 'testing/mobility/:idtest', canActivate: [IsLoggedGuard], component: MobilityComponent},
   {path: 'testing/mobility/:idgruptest/:idtest', canActivate: [IsLoggedGuard], component: MobilityComponent},
+  {path: 'testing/results/:idtest', canActivate: [IsLoggedGuard], component: ComplexResultComponent},
+  {path: 'testing/results/:idgruptest/:idtest', canActivate: [IsLoggedGuard], component: ComplexResultComponent},
 ];
 
 @NgModule({

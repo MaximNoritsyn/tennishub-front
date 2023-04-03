@@ -135,6 +135,9 @@ export class GrouptestDashboardComponent implements OnInit {
     else if (this.task === 'mobility') {
       this._router.navigate(['/testing/mobility', this.group_test.id_db, idTest]);
     }
+    else if (this.task === 'results') {
+      this._router.navigate(['/testing/results', this.group_test.id_db, idTest]);
+    }
   }
 
   onClickAddPlayer(person: any) {
