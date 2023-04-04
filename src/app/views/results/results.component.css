@@ -156,3 +156,8 @@
     margin: 0px;
     padding: 2px;
   }
+
+  .link-row:hover {
+    cursor: pointer;
+    box-shadow: 1px 1px 3px 3px var(--clr10);
+  }
