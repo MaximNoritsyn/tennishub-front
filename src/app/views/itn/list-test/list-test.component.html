@@ -1,0 +1,30 @@
+<div>
+  <h3>{{'base.common.allTests' | translate }}</h3>
+  <a [routerLink]="['/testing/{{_auth.getPersonId_Db()}}/new']">
+    <button>
+      {{'base.common.beginTest' | translate }}
+    </button>
+  </a>
+</div>
+<table class="content-table">
+  <thead>
+    <tr>
+      <th>{{'testing.namedate' | translate }}</th>
+      <th>{{'testing.venue' | translate }}</th>
+      <th>{{'testing.ITN' | translate }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let event of events" (click)="gotoEvent(event.id_db)">
+      <td>
+        {{ event.date }}
+      </td>
+      <td>
+        {{ event.venue }}
+      </td>
+      <td>
+        {{ event.itn }}
+      </td>
+    </tr>
+  </tbody>
+</table>

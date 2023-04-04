@@ -32,8 +32,6 @@ export class IndexComponent implements OnInit {
     if (this._auth.isLoggedIn()) {
       if (await this._auth.isCoachAs()) {
         await this.getPlayers();
-      } else {
-        await this.getEvents();
       }
     }
   }
@@ -44,12 +42,6 @@ export class IndexComponent implements OnInit {
     this.totalElements = data.count;
     this.loadPages();
   };
-  
-  async getEvents() {
-    const data: any = await this._api.getTypeRequestParams('api/tests', {page: this.currentPage}).toPromise();
-    this.events = data.results;
-    this.totalElements = data.count;
-  }
 
 
   onPageChange(page: number) {
@@ -58,7 +50,7 @@ export class IndexComponent implements OnInit {
   }
 
   gotoPlayer(id_db: any) {
-    this._router.navigate(['/player', id_db]);
+    this._router.navigate(['/list-test', id_db]);
   }
 
   gotoEvent(id_db: any) {

@@ -12,12 +12,14 @@ import { GsaComponent } from './views/testing/gsa/gsa.component';
 import { ServeComponent } from './views/testing/serve/serve.component';
 import { MobilityComponent } from './views/testing/mobility/mobility.component';
 import { ComplexResultComponent } from './views/testing/complex-result/complex-result.component';
+import { ListTestComponent } from './views/itn/list-test/list-test.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: '', component: IndexComponent},
   {path: 'player/:id_db', canActivate: [IsLoggedGuard], component: PlayerComponent},
   {path: 'list-grouptest', canActivate: [IsLoggedGuard], component: ListGrouptestComponent},
+  {path: 'list-test/:id_db', canActivate: [IsLoggedGuard], component: ListTestComponent},
   {path: 'grouptestdashboard/:id_db', canActivate: [IsLoggedGuard], component: GrouptestDashboardComponent},
   {path: 'grouptestdashboard/:id_db/:task', canActivate: [IsLoggedGuard], component: GrouptestDashboardComponent},
   {path: 'testing/gsd/:idtest/:stagenumber', canActivate: [IsLoggedGuard], component: GsdVdComponent},

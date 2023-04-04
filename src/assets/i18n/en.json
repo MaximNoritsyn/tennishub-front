@@ -63,7 +63,7 @@
     "testing": {
         "namedate": "Date",
         "venue": "Venue",
-        "ITN": "Individual Test Number"
+        "ITN": "Individual Tennis Number"
     },
     "grouptest": {
         "form": {

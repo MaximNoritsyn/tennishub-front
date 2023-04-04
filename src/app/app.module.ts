@@ -27,6 +27,7 @@ import { ServeComponent } from './views/testing/serve/serve.component';
 import { ResultsServeComponent } from './views/results/results-serve/results-serve.component';
 import { MobilityComponent } from './views/testing/mobility/mobility.component';
 import { ComplexResultComponent } from './views/testing/complex-result/complex-result.component';
+import { ListTestComponent } from './views/itn/list-test/list-test.component';
 
 registerLocaleData(localeUk);
 
@@ -50,7 +51,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ResultsVdComponent,
     ResultsGsaComponent,
     ResultsServeComponent,
-    ComplexResultComponent
+    ComplexResultComponent,
+    ListTestComponent
   ],
   imports: [
     BrowserModule,
