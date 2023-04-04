@@ -1,10 +1,8 @@
 <div>
   <h3>{{'base.common.allTests' | translate }}</h3>
-  <a [routerLink]="['/testing/{{_auth.getPersonId_Db()}}/new']">
-    <button>
-      {{'base.common.beginTest' | translate }}
-    </button>
-  </a>
+  <button (click)="createNewTest()">
+    {{'base.common.beginTest' | translate }}
+  </button>
 </div>
 <table class="content-table">
   <thead>

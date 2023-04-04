@@ -1,0 +1,40 @@
+<form class="edit-form" [formGroup] = 'eventForm' (ngSubmit) = 'saveEvent()'>
+  <div>
+      <label for="nfirst_nameame">{{ 'person.firstname' | translate }}:</label>
+      <input type="text" id="first_name" name="first_name" readonly value="{{ person.first_name }}">
+  </div>
+
+  <div>
+      <label for="last_name">{{ 'person.lastname' | translate }}:</label>
+      <input type="text" id="last_name" name="last_name" readonly value="{{ person.last_name }}">
+  </div>
+
+  <div>
+      <label for="birthday">{{ 'person.birthday' | translate }}:</label>
+      <input type="date" id="birthday" name="birthday" readonly value="{{person.birthday}}">
+  </div>
+
+  <div>
+      <label for="sex">{{ 'person.sex' | translate }}:</label>
+      <input *ngIf="person['sex'] == 'F'" type="text" id="sex" name="sex" readonly value="{{ 'person.sexes.female' | translate }}">
+      <input *ngIf="person['sex'] == 'M'" type="text" id="sex" name="sex" readonly value="{{ 'person.sexes.male' | translate }}">
+  </div>
+
+  <div>
+      <label for="assessor">{{ 'itn.assessor' | translate }}:</label>
+      <input type="text" id="assessor" name="assessor" formControlName="assessor">
+  </div>
+
+  <div>
+      <label for="date">{{ 'itn.date' | translate }}:</label>
+      <input type="date" id="date" name="date" value="{{ today }}" formControlName="date">
+  </div>
+
+  <div>
+      <label for="venue">{{ 'itn.venue' | translate }}:</label>
+      <input type="text" id="venue" name="venue" formControlName="venue">
+  </div>
+
+  <button type="submit" [disabled] = '!this.eventForm.valid' *ngIf="id_db=='new'">{{'base.common.create' | translate}}</button>
+  <button type="submit" [disabled] = '!this.eventForm.valid' *ngIf="id_db!='new'">{{'base.common.save' | translate}}</button>
+</form>

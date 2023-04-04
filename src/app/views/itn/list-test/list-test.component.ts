@@ -28,6 +28,8 @@ export class ListTestComponent implements OnInit {
     this._activeRoute.params.subscribe((params: Params) => {
       if (params['id_db']) {
         this.id_person = params['id_db'];
+      } else {
+        this.id_person = this._auth.getPersonId_Db();
       }
       this.getEvents();
     })
@@ -35,7 +37,6 @@ export class ListTestComponent implements OnInit {
 
   async getEvents() {
     const data: any = await this._api.getTypeRequestParams('api/tests', { page: this.currentPage, id_person: this.id_person }).toPromise();
-    console.log(data);
     this.events = data.result;
     this.totalElements = data.count;
   }
@@ -63,6 +64,10 @@ export class ListTestComponent implements OnInit {
     for (let i = 1; i <= Math.ceil(this.totalElements / this.pageSize); i++) {
       this.listOfPages.push(i);
     }
+  }
+
+  createNewTest() {
+    this._router.navigate(['/testing/head/', this.id_person, 'new']);
   }
 
 }
