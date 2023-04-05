@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang={{this.currentlang}}>
+<html lang="{{'this.currentlang' | translate}}">
 <head>
     <meta charset="utf-8" lang={{this.currentlang}}>
     <link href="https://fonts.googleapis.com/css2?family=Jura:wght@500&display=swap" rel="stylesheet">
@@ -10,8 +10,8 @@
 <header>
     <nav class="navigation desktop-only">
         <ul>
-            <li><a [routerLink]="['/']"> {{'nav.main' | translate}} </a></li>
-            <li><a [routerLink]="['/list-grouptest']" *ngIf="_auth.isLoggedIn()">{{'nav.grouptest' | translate}}</a></li>
+            <li><button (click)="_router.navigate(['/'])"> {{'nav.main' | translate}} </button></li>
+            <li><button (click)="_router.navigate(['/list-grouptest'])" *ngIf="_auth.isLoggedIn()">{{'nav.grouptest' | translate}}</button></li>
         </ul>
         <div class="right-menu-block">
             <ul *ngIf="_auth.isLoggedIn" class="user-nav">
@@ -23,7 +23,7 @@
                 </li>
             </ul>
             <ul class="user-nav" *ngIf="!_auth.isLoggedIn()">
-                <li><a [routerLink]="['/login']">{{'nav.login' | translate}}</a></li>
+                <li><button (click)="_router.navigate(['/login'])">{{'nav.login' | translate}}</button></li>
             </ul>
             <div class="lang-button" *ngIf="translate_service.getLanguage() == 'ua'" (click)="switchLanguage('en')">🇺🇦</div>
             <div class="lang-button" *ngIf="translate_service.getLanguage() == 'en'" (click)="switchLanguage('ua')">🇬🇧</div>
@@ -31,8 +31,8 @@
     </nav>
     <nav class="navigation mobile-only">
         <ul>
-            <li><a [routerLink]="['/']">{{'nav.main' | translate}}</a></li>
-            <li><a [routerLink]="['/list-grouptest']" *ngIf="_auth.isLoggedIn()">{{'nav.grouptestshort' | translate}}</a></li>
+            <li><button (click)="_router.navigate(['/'])">{{'nav.main' | translate}}</button></li>
+            <li><button (click)="_router.navigate(['/list-grouptest'])" *ngIf="_auth.isLoggedIn()">{{'nav.grouptestshort' | translate}}</button></li>
         </ul>
         <div class="right-menu-block">
             <ul class="user-nav" *ngIf="_auth.isLoggedIn">
@@ -44,7 +44,7 @@
                 </li>
             </ul>
             <ul class="user-nav" *ngIf="!_auth.isLoggedIn()">
-                <li><a [routerLink]="['/login']">{{'nav.login' | translate}}</a></li>
+                <li><button (click)="_router.navigate(['/login'])">{{'nav.login' | translate}}</button></li>
             </ul>
             <div class="lang-button" *ngIf="translate_service.getLanguage() == 'ua'" (click)="switchLanguage('en')">🇺🇦</div>
             <div class="lang-button" *ngIf="translate_service.getLanguage() == 'en'" (click)="switchLanguage('ua')">🇬🇧</div>

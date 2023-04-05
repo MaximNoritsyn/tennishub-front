@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from './services/api.service';
 import { AuthService } from './services/auth.service';
 import { Translate_Service } from './services/translate.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,7 @@ export class AppComponent implements OnInit{
 
   constructor(public _auth: AuthService,
               private _api: ApiService,
+              public _router: Router,
               public translate_service: Translate_Service) { 
                 this.currentlang = this.translate_service.getLanguage();
               }

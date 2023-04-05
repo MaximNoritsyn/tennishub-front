@@ -92,6 +92,7 @@ export class AuthService {
  
     clearStorage(): void { 
         localStorage.clear(); 
+        this._router.navigate(['/login']);
     } 
 
     public isLoggedIn() { 

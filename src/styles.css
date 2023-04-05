@@ -48,6 +48,8 @@ main {
   list-style-type: none;
   margin: 0;
   padding: 0;
+  display: flex;
+  height: 50px;
 }
 
 .navigation li {
@@ -55,16 +57,24 @@ main {
 }
 
 .navigation li a {
-  display: block;
+  display: list-item;
   color: var(--fclr30);
   text-align: center;
-  padding: 15px;
+  padding: 10px;
   text-decoration: none;
   font-weight: bold;
   border-radius: 10px;
 }
 
-.navigation li a:hover {
+.navigation li button {
+  margin-top: 0px;
+  height: 50px;
+  border: 1px solid var(--clr30);
+  background-color: var(--clr30);
+  color: var(--fclr30);
+}
+
+.navigation li button:hover {
   border: 1px solid var(--fclr10);
   background-color: var(--clr10);
   color: var(--fclr10);
@@ -101,7 +111,7 @@ main {
   font-weight: bold;
   margin-top: 0;
   margin: 0px;
-  padding: 15px;
+  height: 100%;
   border-radius: 10px;
 }
 
@@ -288,7 +298,7 @@ input[readonly] {
   border-collapse: collapse;
   margin: 25px 0px;
   font-size: 0.9em;
-  min-width: 400px;
+  min-width: 350px;
   border-radius: 10px;
   overflow:hidden;
   box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.2);
