@@ -1,12 +1,12 @@
-<h3 *ngIf="gsd">{{ 'itn.tasks.gsd' | translate }} ({{playername}})
-</h3>
-<h3 *ngIf="!gsd">{{ 'itn.tasks.vd' | translate }} ({{playername}})
-</h3>
-<h5 class="cort-bounce" *ngIf="!laststage">
-  <a>{{'court.strike' | translate}} № {{stage_number}}</a>
-  <a *ngIf="isForeHand"> ({{'court.forehand' | translate}})</a>
-  <a *ngIf="!isForeHand"> ({{'court.backhand' | translate}})</a>
-</h5>
+<div style="margin-left: 30px;">
+  <h3 *ngIf="gsd">{{ "itn.tasks.gsd" | translate }} ({{ playername }})</h3>
+  <h3 *ngIf="!gsd">{{ "itn.tasks.vd" | translate }} ({{ playername }})</h3>
+  <h5 class="cort-bounce" *ngIf="!laststage">
+    <a>{{ "court.strike" | translate }} № {{ stage_number }}</a>
+    <a *ngIf="isForeHand"> ({{ "court.forehand" | translate }})</a>
+    <a *ngIf="!isForeHand"> ({{ "court.backhand" | translate }})</a>
+  </h5>
+</div>
 <div class="main-result-area">
   <div class="result-area-input" *ngIf="!laststage">
     <div class="tennis-court">
@@ -16,54 +16,125 @@
       <div class="area-left-service-top"></div>
       <div class="area-right-service-top"></div>
 
-      <div class="area-net active-area" id="area_net" (click)="onClickArea('area_net')"
-        [ngClass]="{ 'first_bounce': first_bounce==='area_net', 'second_bounce': second_bounce==='area_net' }">
-      </div>
+      <div
+        class="area-net active-area"
+        id="area_net"
+        (click)="onClickArea('area_net')"
+        [ngClass]="{
+          first_bounce: first_bounce === 'area_net',
+          second_bounce: second_bounce === 'area_net'
+        }"
+      ></div>
 
-      <div class="area-left-alley-bottom active-area" id="area_left_alley" (click)="onClickArea('area_left_alley')"
-        [ngClass]="{ 'first_bounce': first_bounce==='area_left_alley', 'second_bounce': second_bounce==='area_left_alley' }">
-      </div>
+      <div
+        class="area-left-alley-bottom active-area"
+        id="area_left_alley"
+        (click)="onClickArea('area_left_alley')"
+        [ngClass]="{
+          first_bounce: first_bounce === 'area_left_alley',
+          second_bounce: second_bounce === 'area_left_alley'
+        }"
+      ></div>
 
-      <div class="area-left-service-bottom point1 active-area" id="area_left_service"
+      <div
+        class="area-left-service-bottom point1 active-area"
+        id="area_left_service"
         (click)="onClickArea('area_left_service')"
-        [ngClass]="{ 'first_bounce': first_bounce==='area_left_service', 'second_bounce': second_bounce==='area_left_service' }">
-        1 {{'court.point' | translate}}</div>
+        [ngClass]="{
+          first_bounce: first_bounce === 'area_left_service',
+          second_bounce: second_bounce === 'area_left_service'
+        }"
+      >
+        1 {{ "court.point" | translate }}
+      </div>
 
-      <div class="area-right-service-bottom point1 active-area" id="area_right_service"
+      <div
+        class="area-right-service-bottom point1 active-area"
+        id="area_right_service"
         (click)="onClickArea('area_right_service')"
-        [ngClass]="{ 'first_bounce': first_bounce==='area_right_service', 'second_bounce': second_bounce==='area_right_service' }">
-        1 {{'court.point' | translate}}</div>
-
-      <div class="area-right-alley-bottom active-area" id="area_right_alley" (click)="onClickArea('area_right_alley')"
-        [ngClass]="{ 'first_bounce': first_bounce==='area_right_alley', 'second_bounce': second_bounce==='area_right_alley' }">
+        [ngClass]="{
+          first_bounce: first_bounce === 'area_right_service',
+          second_bounce: second_bounce === 'area_right_service'
+        }"
+      >
+        1 {{ "court.point" | translate }}
       </div>
 
-      <div class="area-central-bottom-1 point2 active-area" id="area_central1" (click)="onClickArea('area_central1')"
-        [ngClass]="{ 'first_bounce': first_bounce==='area_central1', 'second_bounce': second_bounce==='area_central1' }">
+      <div
+        class="area-right-alley-bottom active-area"
+        id="area_right_alley"
+        (click)="onClickArea('area_right_alley')"
+        [ngClass]="{
+          first_bounce: first_bounce === 'area_right_alley',
+          second_bounce: second_bounce === 'area_right_alley'
+        }"
+      ></div>
+
+      <div
+        class="area-central-bottom-1 point2 active-area"
+        id="area_central1"
+        (click)="onClickArea('area_central1')"
+        [ngClass]="{
+          first_bounce: first_bounce === 'area_central1',
+          second_bounce: second_bounce === 'area_central1'
+        }"
+      >
         2
-        {{'court.points' | translate}}</div>
-
-      <div class="area-central-bottom-2 point3 active-area" id="area_central2" (click)="onClickArea('area_central2')"
-        [ngClass]="{ 'first_bounce': first_bounce==='area_central2', 'second_bounce': second_bounce==='area_central2' }">
-        3
-        {{'court.points' | translate}}</div>
-
-      <div class="area-central-bottom-3 point4 active-area" id="area_central3" (click)="onClickArea('area_central3')"
-        [ngClass]="{ 'first_bounce': first_bounce==='area_central3', 'second_bounce': second_bounce==='area_central3' }">
-        4
-        {{'court.points' | translate}}</div>
-
-      <div class="area-out-line active-area" id="area_out_line" (click)="onClickArea('area_out_line')"
-        [ngClass]="{ 'first_bounce': first_bounce==='area_out_line', 'second_bounce': second_bounce==='area_out_line' }">
-        {{'court.powerarea1' | translate}}
+        {{ "court.points" | translate }}
       </div>
 
-      <div class="area-out-powerline active-area" id="area_out_powerline" (click)="onClickArea('area_out_powerline')"
-        [ngClass]="{ 'first_bounce': first_bounce==='area_out_powerline', 'second_bounce': second_bounce==='area_out_powerline' }">
-        {{'court.powerareadouble' | translate}}</div>
+      <div
+        class="area-central-bottom-2 point3 active-area"
+        id="area_central2"
+        (click)="onClickArea('area_central2')"
+        [ngClass]="{
+          first_bounce: first_bounce === 'area_central2',
+          second_bounce: second_bounce === 'area_central2'
+        }"
+      >
+        3
+        {{ "court.points" | translate }}
+      </div>
+
+      <div
+        class="area-central-bottom-3 point4 active-area"
+        id="area_central3"
+        (click)="onClickArea('area_central3')"
+        [ngClass]="{
+          first_bounce: first_bounce === 'area_central3',
+          second_bounce: second_bounce === 'area_central3'
+        }"
+      >
+        4
+        {{ "court.points" | translate }}
+      </div>
+
+      <div
+        class="area-out-line active-area"
+        id="area_out_line"
+        (click)="onClickArea('area_out_line')"
+        [ngClass]="{
+          first_bounce: first_bounce === 'area_out_line',
+          second_bounce: second_bounce === 'area_out_line'
+        }"
+      >
+        {{ "court.powerarea1" | translate }}
+      </div>
+
+      <div
+        class="area-out-powerline active-area"
+        id="area_out_powerline"
+        (click)="onClickArea('area_out_powerline')"
+        [ngClass]="{
+          first_bounce: first_bounce === 'area_out_powerline',
+          second_bounce: second_bounce === 'area_out_powerline'
+        }"
+      >
+        {{ "court.powerareadouble" | translate }}
+      </div>
     </div>
   </div>
-  <div style="margin:20px">
+  <div style="margin: 20px">
     <ng-container *ngIf="gsd">
       <app-results-gsd [testEvent]="testEvent"></app-results-gsd>
     </ng-container>
@@ -71,6 +142,7 @@
       <app-results-vd [testEvent]="testEvent"></app-results-vd>
     </ng-container>
   </div>
-
 </div>
-<button (click)="finishTask()" class="main-result-area" *ngIf="laststage">{{'base.common.finish' | translate}}</button>
+<button (click)="finishTask()" class="main-result-area" *ngIf="laststage">
+  {{ "base.common.finish" | translate }}
+</button>

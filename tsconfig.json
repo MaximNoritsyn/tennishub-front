@@ -24,8 +24,7 @@
       "dom"
     ],
     "types": [
-      "node",
-      "@ionic/angular"
+      "node"
     ]
   },
   "angularCompilerOptions": {

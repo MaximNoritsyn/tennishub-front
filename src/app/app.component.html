@@ -1,63 +1,128 @@
 <!DOCTYPE html>
-<html lang="{{'this.currentlang' | translate}}">
-<head>
-    <meta charset="utf-8" lang={{this.currentlang}}>
-    <link href="https://fonts.googleapis.com/css2?family=Jura:wght@500&display=swap" rel="stylesheet">
-    <title>{{'base.title' | translate}}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
-<header>
-    <nav class="navigation desktop-only">
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{{ "base.title" | translate }}</title>
+  </head>
+  <body style="margin: 0px">
+    <header>
+      <nav class="navigation desktop-only">
         <ul>
-            <li><button (click)="_router.navigate(['/'])"> {{'nav.main' | translate}} </button></li>
-            <li><button (click)="_router.navigate(['/list-grouptest'])" *ngIf="_auth.isLoggedIn()">{{'nav.grouptest' | translate}}</button></li>
+          <li>
+            <button (click)="_router.navigate(['/'])">
+              {{ "nav.main" | translate }}
+            </button>
+          </li>
+          <li>
+            <button
+              (click)="_router.navigate(['/list-grouptest'])"
+              *ngIf="_auth.isLoggedIn()"
+            >
+              {{ "nav.grouptest" | translate }}
+            </button>
+          </li>
         </ul>
         <div class="right-menu-block">
-            <ul *ngIf="_auth.isLoggedIn" class="user-nav">
-                <li class="dropdown">
-                    <button class="drop-btn">{{ _auth.getUserName() }}</button>
-                    <div class="dropdown-menu">
-                        <div id="sign-out-desktop" class="button-form" (click)="logout()">{{'nav.logout' | translate}}</div>
-                    </div>
-                </li>
-            </ul>
-            <ul class="user-nav" *ngIf="!_auth.isLoggedIn()">
-                <li><button (click)="_router.navigate(['/login'])">{{'nav.login' | translate}}</button></li>
-            </ul>
-            <div class="lang-button" *ngIf="translate_service.getLanguage() == 'ua'" (click)="switchLanguage('en')">🇺🇦</div>
-            <div class="lang-button" *ngIf="translate_service.getLanguage() == 'en'" (click)="switchLanguage('ua')">🇬🇧</div>
+          <ul *ngIf="_auth.isLoggedIn" class="user-nav">
+            <li class="dropdown">
+              <button class="drop-btn">{{ _auth.getUserName() }}</button>
+              <div class="dropdown-menu">
+                <div
+                  id="sign-out-desktop"
+                  class="button-form"
+                  (click)="logout()"
+                >
+                  {{ "nav.logout" | translate }}
+                </div>
+              </div>
+            </li>
+          </ul>
+          <ul class="user-nav" *ngIf="!_auth.isLoggedIn()">
+            <li>
+              <button (click)="_router.navigate(['/login'])">
+                {{ "nav.login" | translate }}
+              </button>
+            </li>
+          </ul>
+          <div
+            class="lang-button"
+            *ngIf="translate_service.getLanguage() == 'ua'"
+            (click)="switchLanguage('en')"
+          >
+            🇺🇦
+          </div>
+          <div
+            class="lang-button"
+            *ngIf="translate_service.getLanguage() == 'en'"
+            (click)="switchLanguage('ua')"
+          >
+            🇬🇧
+          </div>
         </div>
-    </nav>
-    <nav class="navigation mobile-only">
+      </nav>
+      <nav class="navigation mobile-only">
         <ul>
-            <li><button (click)="_router.navigate(['/'])">{{'nav.main' | translate}}</button></li>
-            <li><button (click)="_router.navigate(['/list-grouptest'])" *ngIf="_auth.isLoggedIn()">{{'nav.grouptestshort' | translate}}</button></li>
+          <li>
+            <button (click)="_router.navigate(['/'])">
+              {{ "nav.main" | translate }}
+            </button>
+          </li>
+          <li>
+            <button
+              (click)="_router.navigate(['/list-grouptest'])"
+              *ngIf="_auth.isLoggedIn()"
+            >
+              {{ "nav.grouptestshort" | translate }}
+            </button>
+          </li>
         </ul>
         <div class="right-menu-block">
-            <ul class="user-nav" *ngIf="_auth.isLoggedIn">
-                <li class="dropdown">
-                    <button class="drop-btn">{{ _auth.getUserName() }}</button>
-                    <div class="dropdown-menu">
-                        <div id="sign-out-mobility" class="button-form" (click)="logout()">{{'nav.logout' | translate}}</div>
-                    </div>
-                </li>
-            </ul>
-            <ul class="user-nav" *ngIf="!_auth.isLoggedIn()">
-                <li><button (click)="_router.navigate(['/login'])">{{'nav.login' | translate}}</button></li>
-            </ul>
-            <div class="lang-button" *ngIf="translate_service.getLanguage() == 'ua'" (click)="switchLanguage('en')">🇺🇦</div>
-            <div class="lang-button" *ngIf="translate_service.getLanguage() == 'en'" (click)="switchLanguage('ua')">🇬🇧</div>
+          <ul class="user-nav" *ngIf="_auth.isLoggedIn">
+            <li class="dropdown">
+              <button class="drop-btn">{{ _auth.getUserName() }}</button>
+              <div class="dropdown-menu">
+                <div
+                  id="sign-out-mobility"
+                  class="button-form"
+                  (click)="logout()"
+                >
+                  {{ "nav.logout" | translate }}
+                </div>
+              </div>
+            </li>
+          </ul>
+          <ul class="user-nav" *ngIf="!_auth.isLoggedIn()">
+            <li>
+              <button (click)="_router.navigate(['/login'])">
+                {{ "nav.login" | translate }}
+              </button>
+            </li>
+          </ul>
+          <div
+            class="lang-button"
+            *ngIf="translate_service.getLanguage() == 'ua'"
+            (click)="switchLanguage('en')"
+          >
+            🇺🇦
+          </div>
+          <div
+            class="lang-button"
+            *ngIf="translate_service.getLanguage() == 'en'"
+            (click)="switchLanguage('ua')"
+          >
+            🇬🇧
+          </div>
         </div>
-    </nav>
-</header>
-<main>
-    <router-outlet></router-outlet>
-</main>
-<footer>
-    <h6>Робоча назва - ТенісХаб. Працюємо над автоматизацією внесення результатів тестування міжнародного тенісного
-        номеру</h6>
-</footer>
-
-</body>
+      </nav>
+    </header>
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+    <footer>
+      <h6>
+        Робоча назва - ТенісХаб. Працюємо над автоматизацією внесення
+        результатів тестування міжнародного тенісного номеру
+      </h6>
+    </footer>
+  </body>
 </html>

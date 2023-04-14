@@ -39,7 +39,7 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-radius: 10px;
+  border-radius: 0px 0px 10px 10px;
   flex-wrap: nowrap;
   align-content: center;
 }
@@ -72,6 +72,7 @@ main {
   border: 1px solid var(--clr30);
   background-color: var(--clr30);
   color: var(--fclr30);
+  border-radius: 10px;
 }
 
 .navigation li button:hover {
