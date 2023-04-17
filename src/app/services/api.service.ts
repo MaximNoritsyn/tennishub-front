@@ -9,7 +9,7 @@ import { firstValueFrom } from 'rxjs';
 export class ApiService { 
  
  
-  private REST_API_SERVER = "http://localhost:8000/"; 
+  private REST_API_SERVER = "http://tenni-loadb-142yyztylylj0-726f5a50ceb2c252.elb.eu-west-1.amazonaws.com:8000/";
   constructor(private httpClient: HttpClient) { } 
  
   getTypeRequestParams(url: string, params?: {[key: string]: any}) { 
