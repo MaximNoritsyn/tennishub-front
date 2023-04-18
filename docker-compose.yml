@@ -9,6 +9,8 @@ services:
       - 80:80
     networks:
       - tennishub-net
+    depends_on:
+      - backend
 
   backend:
     image: 277879185670.dkr.ecr.eu-west-1.amazonaws.com/tennishub-api:latest
