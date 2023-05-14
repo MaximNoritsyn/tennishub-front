@@ -72,9 +72,15 @@ export class ServeComponent implements OnInit {
   }
 
   onClickArea(area: string) {
+    const availableFirstBounces = ['area_right_middle_service', 'area_right_wide_service', 
+    'area_left_wide_service', 'area_left_middle_service']
+
     if (this.first_bounce === ''
       && this.second_bounce === '') {
       this.first_bounce = area;
+      if (!availableFirstBounces.includes(this.first_bounce)) {
+        this.startTimeout();
+      }
     }
     else if (this.first_bounce !== ''
       && this.second_bounce === '') {
@@ -86,6 +92,9 @@ export class ServeComponent implements OnInit {
       this.first_bounce = area;
       this.second_bounce = '';
       this.cancelTimeout();
+      if (!availableFirstBounces.includes(area)) {
+        this.startTimeout();
+      }
     }
   }
 

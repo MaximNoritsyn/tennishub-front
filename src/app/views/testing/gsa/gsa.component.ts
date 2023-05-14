@@ -67,9 +67,17 @@ export class GsaComponent implements OnInit {
   }
 
   onClickArea(area: string) {
+
+    const availableFirstBounces = ['area_left_service', 'area_center_service',
+    'area_right_service', 'area_central_left', 
+    'area_central_center', 'area_central_right']
+
     if (this.first_bounce === ''
       && this.second_bounce === '') {
       this.first_bounce = area;
+      if (!availableFirstBounces.includes(area)) {
+        this.startTimeout();
+      }
     }
     else if (this.first_bounce !== ''
       && this.second_bounce === '') {
@@ -81,6 +89,9 @@ export class GsaComponent implements OnInit {
       this.first_bounce = area;
       this.second_bounce = '';
       this.cancelTimeout();
+      if (!availableFirstBounces.includes(area)) {
+        this.startTimeout();
+      }
     }
   }
 
@@ -142,10 +153,10 @@ export class GsaComponent implements OnInit {
       || this.stage_number == 4
       || this.stage_number == 6
       || this.stage_number == 8) {
-      this.isForeHand = true;
+      this.isForeHand = false;
     }
     else {
-      this.isForeHand = false;
+      this.isForeHand = true;
     }
     if (this.stage_number < 7) {
       this.dl = true;
